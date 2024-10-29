@@ -31,11 +31,11 @@ int	main(int ac, char **av)
 	} */
 	init_win(&data);
 	init_map(&data);
-	mlx_loop_hook(data.mlx, set_minimap, &data);
+	mlx_loop_hook(data.mlx, parse_map, &data);
 	mlx_loop(data.mlx);
 	if (data.map_data.map[0] != NULL)
 		free_array(data.map_data.map);
-	free_char_option(&data);
+	//free_char_option(&data);
 
 
 	return (0);

@@ -20,7 +20,7 @@
 
 
 //#define M_PI       3.14159265358979323846;
-#define TILE 8;
+#define TILE 16;
 
 typedef struct s_coord{
 	int	x;
@@ -45,8 +45,8 @@ typedef struct s_arrow{
 
 typedef struct s_map_data{
 	char			**map;
-	unsigned int	nb_column;
-	unsigned int	nb_row;
+	int	nb_column;
+	int	nb_row;
 	int				p_count;
 	int				width;
 	int				height;
@@ -74,16 +74,21 @@ t_coord	create_coord(int x, int y);
 /* utils/ft_error.c */
 
 
-/* utils/ft_utils.c */
+/* utils.c */
+void	free_array(char **array);
 
 
-/* raycast/minimap.c */
-
+/* minimap/map_checking.c */
+int	parse_map(t_data *data);
+void	draw_tile(t_data *data, char c, t_coord *pen);
+int	select_color(char c);
+int is_onmap(char c);
 
 /* raycast/pos.c */
 
-/* raycast/mlxinit.c */
-
+/* mlxinit.c */
+void  init_map(t_data *data);
+void init_win(t_data *data);
 
 /* raycast/draw.c */
 

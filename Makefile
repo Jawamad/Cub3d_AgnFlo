@@ -9,7 +9,7 @@ LDFLAGS = -lreadline
 RM = rm -f
 
 SRCS =  $(wildcard $(DIR_SRC)*.c) \
-		$(wildcard $(DIR_SRC)/utils/*.c) \
+		$(wildcard $(DIR_SRC)/minimap/*.c) \
 		$(wildcard $(DIR_SRC)/parsing/*.c) \
 		$(wildcard $(DIR_SRC)/raycast/*.c) \
 
