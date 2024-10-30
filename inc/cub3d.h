@@ -58,6 +58,7 @@ typedef struct s_map_data{
 	char			*cc;
 	char			*cf;
 	int				count_line;
+	char	*map_file;
 }	t_map_data;
 
 typedef struct s_data{
@@ -86,6 +87,16 @@ t_coord	create_coord(int x, int y);
 
 
 /* raycast/draw.c */
+
+/*src/init.c*/
+int	if_temp_null(t_map_data  *map_data, char **temp);
+char	**manage_temp(t_map_data  *map_data, char *line);
+int	save_line_in_map(t_map_data  *map_data, char *line);
+int	create_map(t_map_data  *map_data);
+
+/*src/parsing.c*/
+int	check_extension_file_name(char *name);
+int	does_file_exist(char *name);
 
 
 #endif
