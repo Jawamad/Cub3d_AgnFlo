@@ -1,50 +1,46 @@
 #include "../../inc/cub3d.h"
 
-int	parse_map(t_data *data)
+void	parse_map(t_data *data)
 {
 	t_coord	checker;
 	t_coord	pen;
-	int		tile;
 
-	tile = TILE;
 	checker = create_coord(0,0);
-	pen = create_coord(tile, tile);
+	pen = create_coord(TILE, TILE);
+	printf("%d\n", data->map_data.height);
 	while (checker.y < data->map_data.height)
 	{
+		//printf("%d\n", data->map_data.width);
 		while (checker.x < data->map_data.width)
 		{
-			printf("x: %d, y: %d\n", pen.x, pen.y);
 			draw_tile(data, data->map_data.map[checker.y][checker.x], &pen);
-			pen.x += tile;
+			pen.x += TILE;
 			checker.x++;
 		}
-		pen.x = tile;
-		pen.y += tile;
+		pen.x = TILE;
+		pen.y += TILE;
 		checker.x = 0;
 		checker.y++;
 	}
-	return (1);
 }
 
 void	draw_tile(t_data *data, char c, t_coord *pen)
 {
-	int	tile;
 	t_coord	limit;
 
-	tile = TILE;
-	limit = create_coord(pen->x + tile, pen->y + tile);
+	limit = create_coord(pen->x + TILE, pen->y + TILE);
 	while (pen->y < limit.y)
 	{
 		while (pen->x < limit.x)
 		{
 			if (is_onmap(c))
-				mlx_pixel_put(data->mlx, data->mlx_win, pen->x, pen->y, select_color(c));
+				put_pixel(data->img, pen->x, pen->y, select_color(c));
 			pen->x++;
 		}
-		pen->x = limit.x - tile;
+		pen->x = limit.x - TILE;
 		pen->y++;
 	}
-	pen->y = limit.y - tile;
+	pen->y = limit.y - TILE;
 }
 
 int	select_color(char c)

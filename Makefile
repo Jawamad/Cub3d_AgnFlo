@@ -10,7 +10,7 @@ RM = rm -f
 
 SRCS =  $(wildcard $(DIR_SRC)*.c) \
 		$(wildcard $(DIR_SRC)/minimap/*.c) \
-		$(wildcard $(DIR_SRC)/parsing/*.c) \
+		$(wildcard $(DIR_SRC)/img_gen/*.c) \
 		$(wildcard $(DIR_SRC)/raycast/*.c) \
 
 OBJS = $(SRCS:$(DIR_SRC)%.c=$(DIR_OBJ)%.o)

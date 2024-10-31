@@ -3,7 +3,7 @@
 void init_win(t_data *data)
 {
 	data->mlx = mlx_init();
-	data->mlx_win = mlx_new_window(data->mlx, 1200, 600, "Cub3d");
+	data->mlx_win = mlx_new_window(data->mlx, SC_WIDTH, SC_HEIGHT, GAME_NAME);
 }
 
 void  init_map(t_data *data)

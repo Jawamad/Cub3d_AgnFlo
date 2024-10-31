@@ -2,12 +2,17 @@
 
 
 
-
+int	loop_routine(t_data *data)
+{
+	parse_map(data);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img->img_ptr, 0, 0);
+	return (1);
+}
 
 
 int	main(int ac, char **av)
 {
-	t_data	data;
+	t_data	*data;
 	//int i = 0;
 	(void)ac;
 	(void)av;
@@ -29,12 +34,22 @@ int	main(int ac, char **av)
 		printf("ligne %d : %s\n", i, data.map_data.map[i]);
 		i++;
 	} */
-	init_win(&data);
-	init_map(&data);
-	mlx_loop_hook(data.mlx, parse_map, &data);
-	mlx_loop(data.mlx);
-	if (data.map_data.map[0] != NULL)
-		free_array(data.map_data.map);
+
+
+	// Allocation explicite de data
+	data = malloc(sizeof(t_data));
+	if (!data)
+	{
+		fprintf(stderr, "Erreur : échec de l'allocation mémoire pour data\n");
+		return (1);
+	}
+	init_win(data);
+	init_map(data);
+	init_img(data);
+	mlx_loop_hook(data->mlx, loop_routine, data);
+	mlx_loop(data->mlx);
+	if (data->map_data.map[0] != NULL)
+		free_array(data->map_data.map);
 	//free_char_option(&data);
 
 
