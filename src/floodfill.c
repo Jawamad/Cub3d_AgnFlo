@@ -18,41 +18,41 @@
 // 	return (1);
 // }
 
-// void	flood_map(t_game *game, int x, int y)
-// {
-// 	if (game->map[y][x] == 'P' || game->map[y][x] == '1'
-// 		|| game->map[y][x] == 'F')
-// 		return ;
-// 	game->map[y][x] = 'F';
-// 	flood_map(game, x, y + 1);
-// 	flood_map(game, x, y - 1);
-// 	flood_map(game, x + 1, y);
-// 	flood_map(game, x - 1, y);
-// }
+void	flood_map(t_map_data  *map_data, int x, int y)
+{
+	if (map_data->map[y][x] == 'N' || map_data->map[y][x] == '1'
+		|| map_data->map[y][x] == 'F')
+		return ;
+	map_data->map[y][x] = 'F';
+	flood_map(map_data, x, y + 1);
+	flood_map(map_data, x, y - 1);
+	flood_map(map_data, x + 1, y);
+	flood_map(map_data, x - 1, y);
+}
 
-// int	check_flood_fill(t_game *game)
-// {
-// 	int	i;
-// 	int	j;
+int	check_flood_fill(t_map_data  *map_data)
+{
+	int	i;
+	int	j;
 
-// 	i = 0;
-// 	j = 0;
-// 	flood_map(game, game->player_pos_x, game->player_pos_y);
-// 	while (i < game->map_height)
-// 	{
-// 		while (j < game->map_width)
-// 		{
-// 			if (game->map[i][j] == 'C' || game->map[i][j] == 'E')
-// 			{
-// 				return (0);
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 		j = 0;
-// 	}
-// 	return (1);
-// }
+	i = 0;
+	j = 0;
+	flood_map(map_data, 2, 11);
+	while (i < map_data->height)
+	{
+		while (j < map_data->width)
+		{
+			if (map_data->map[i][j] == 'C' || map_data->map[i][j] == 'E')
+			{
+				return (0);
+			}
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	return (1);
+}
 
 // int	check_flood_fill_map(t_game *game, t_gamefile *gamefile)
 // {

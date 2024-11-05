@@ -62,33 +62,109 @@ int	save_line_in_map(t_map_data  *map_data, char *line)
 	map_data->map = temp;
 	return (1);
 }
+
+int is_map_line(const char *line)
+{
+	int i = 0;
+
+	if (strncmp(line, "NO", 2) == 0 || strncmp(line, "SO", 2) == 0 ||
+		strncmp(line, "WE", 2) == 0 || strncmp(line, "EA", 2) == 0 ||
+		strncmp(line, "F", 1) == 0 || strncmp(line, "C", 1) == 0)
+	{
+		return 0;
+	}
+
+	while (line[i])
+	{
+		if (line[i] != '0' && line[i] != '1' && line[i] != ' ' && line[i] != '\n' && 
+			line[i] != 'N' && line[i] != 'S' && line[i] != 'E' && line[i] != 'W')
+		{
+			return 0;
+		}
+		i++;
+	}
+	return 1;
+}
+
 int	create_map(t_map_data  *map_data)
 {
 	int		fd;
-	int		i;	
+	int		height;	
 	char	*treated_line;
+	int		width;
+	int	i;
 
-	i = 0;
+	height = 0;
 	fd = open(map_data->map_file, O_RDONLY);
 	if (fd < 0)
 		return (0);
 	ft_memset(map_data, 0, sizeof(t_map_data));
 	treated_line = get_next_line(fd);
+
 	if (!treated_line)
-	{
-		close(fd);
-		return (0);
-	}
+		return (close(fd), 0);
+
+
 	while (treated_line)
 	{
-		save_line_in_map(map_data, treated_line);
+		width = 0;
+		i = 0;
+		if (is_map_line(treated_line) && *treated_line != '\n')
+		{
+			while (treated_line[i] != '\n' && treated_line[i] != '\0')
+			{
+				if (treated_line[i] == '\t')
+				{
+					width += 4;
+				}
+				else
+					width++;
+				i++;
+			}
+			treated_line[i] = '\0';
+			// y = 0;
+			// while (treated_line[y])
+			// {
+			// 	printf("%c", treated_line[y]);
+			// 	y++;
+			// }
+			// printf("\n width %d\n", width);
+			if (map_data->width < width)
+				map_data->width = width;
+			save_line_in_map(map_data, treated_line);
+			height++;
+		}
+		
 		free(treated_line);
 		treated_line = get_next_line(fd);
-		i++;
 	}
+	//printf("%d\n", map_data->height);
+	//printf("%d\n", map_data->width);
 	close(fd);
 	return (1);
 }
+
+/*nb_column,	nb_row, p_count, width, height */
+void display_map_data(t_map_data  *map_data)
+{
+	int x;
+	int y;
+
+	//printf("%d",  map_data->width);
+	y = 0;
+	while (y < map_data->height)
+	{
+		x = 0;
+		while (x < map_data->width)
+		{
+			printf("%c", map_data->map[y][x]);
+			x++;
+		}
+		printf("\n");
+		y++;
+	}	
+}
+
 
 int	create_map_for_game(t_map_data  *map_data)
 {
@@ -103,5 +179,17 @@ int	create_map_for_game(t_map_data  *map_data)
 	// 	return (0);
 	// if (!check_map(game))
 	// 	return (0);
-	return (1);
+	else
+	{
+		//ft_printf("map created successfully\n");
+		return (1);
+	}
+}
+
+void init_images_walls(t_map_data  *map_data)
+{
+	map_data->no = "./assetes/ea.png";
+	map_data->so = "./assetes/no.png";
+	map_data->we = "./assetes/so.png";
+	map_data->ea = "./assetes/we.png";
 }

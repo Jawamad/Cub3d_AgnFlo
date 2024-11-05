@@ -19,14 +19,20 @@ int	main(int ac, char **av)
         ft_printf("Error: invalid file extension\n");
         return (0);
     }
+	map_data.map_file = av[1];
+    if (does_file_exist(map_data.map_file))
+	{
+        return (0);
+	}
+	
+	create_map_for_game(&map_data);
+	check_flood_fill(&map_data);
+	display_map_data(&map_data);
 
-	map_data.map_file = av[2];
-
-    // if (!does_file_exist(map_data.map_file))
-    //     return (0);
-
-	// if (!create_map_for_game(&data, &map_data))
-	// 	return (0);
+	// check map
+	// check_walls_horizontal(&map_data);
+	// check_walls_vertical(&map_data);
+	// check_allowed_caracters(&map_data);
 
 	/*
 	printf("NO : %s\n", data.map_data.no);

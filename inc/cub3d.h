@@ -93,10 +93,19 @@ int	if_temp_null(t_map_data  *map_data, char **temp);
 char	**manage_temp(t_map_data  *map_data, char *line);
 int	save_line_in_map(t_map_data  *map_data, char *line);
 int	create_map(t_map_data  *map_data);
+int	create_map_for_game(t_map_data  *map_data);
 
 /*src/parsing.c*/
 int	check_extension_file_name(char *name);
 int	does_file_exist(char *name);
+void display_map_data(t_map_data  *map_data);
+int	check_walls_horizontal(t_map_data  *map_data);
+int	check_walls_vertical(t_map_data  *map_data);
+int	check_allowed_caracters(t_map_data  *map_data);
 
+
+/*src/floodfill.c*/
+void	flood_map(t_map_data  *map_data, int x, int y);
+int	check_flood_fill(t_map_data  *map_data);
 
 #endif
