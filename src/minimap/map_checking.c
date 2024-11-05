@@ -7,7 +7,6 @@ void	parse_map(t_data *data)
 
 	checker = create_coord(0,0);
 	pen = create_coord(TILE, TILE);
-	printf("%d\n", data->map_data.height);
 	while (checker.y < data->map_data.height)
 	{
 		//printf("%d\n", data->map_data.width);

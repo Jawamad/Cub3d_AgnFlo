@@ -8,8 +8,9 @@ void init_win(t_data *data)
 
 void  init_map(t_data *data)
 {
-	/* char	c;
-	data->map_data.player.angle = M_PI; */
+	char	c;
+	
+	data->map_data.player.angle = M_PI;
 
 	data->map_data.map = malloc(sizeof(char*) * 10);
 	data->map_data.map[0] = malloc(sizeof(char) * 12);
@@ -23,7 +24,7 @@ void  init_map(t_data *data)
 	data->map_data.map[4] = malloc(sizeof(char) * 12);
 	data->map_data.map[4] = "10000000001";
 	data->map_data.map[5] = malloc(sizeof(char) * 12);
-	data->map_data.map[5] = "10000000001";
+	data->map_data.map[5] = "1000S000001";
 	data->map_data.map[6] = malloc(sizeof(char) * 12);
 	data->map_data.map[6] = "10000000001";
 	data->map_data.map[7] = malloc(sizeof(char) * 12);
@@ -34,12 +35,14 @@ void  init_map(t_data *data)
 	data->map_data.map[9] = "111111     ";
 	data->map_data.height = 10;
 	data->map_data.width = 11;
-	/* data->map_data.player.ppos = search_player(data);
+	data->map_data.player.ppos.x = 1;
+	data->map_data.player.ppos.x = 8;
+	data->map_data.player.ppos = search_player(data);
 	c = data->map_data.map[(int)data->map_data.player.ppos.y][(int)data->map_data.player.ppos.x];
 	if (c == 'N')
-		data->map_data.player.angle /= 2;
-	else if (c == 'S')
 		data->map_data.player.angle = 3 * data->map_data.player.angle /2;
+	else if (c == 'S')
+		data->map_data.player.angle /= 2;
 	else if (c == 'E')
-		data->map_data.player.angle = 0; */
+		data->map_data.player.angle = 0;
 }

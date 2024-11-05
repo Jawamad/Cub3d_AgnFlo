@@ -41,9 +41,9 @@ typedef struct s_player{
 }	t_player;
 
 typedef struct s_arrow{
-	t_pos head;
-	t_pos left;
-	t_pos right;
+	t_coord	head;
+	t_coord	left;
+	t_coord	right;
 }	t_arrow;
 
 typedef struct s_map_data{
@@ -72,6 +72,8 @@ typedef struct s_img{
 }	t_img;
 
 typedef struct s_data{
+	int			keycode;
+	int			key_pressed;
 	void		*mlx;
 	void		*mlx_win;
 	t_img		*img;
@@ -81,29 +83,44 @@ typedef struct s_data{
 
 /* Fonctions */
 
+/* onwork/main */
+void	action_key(t_data *data);
+int	handle_keyrelease(int keycode, t_data *data);
+int	handle_keypress(int keycode, t_data *data);
+
+
 /* minimap/map_pos.c */
 t_pos	create_pos(float x, float y);
 t_coord	create_coord(int x, int y);
+
 /* img_gen/img.c*/
+void	put_pixel(t_img *img, int x, int y, int color);
 void	init_img(t_data *data);
 
 /* utils.c */
 void	free_array(char **array);
-void	put_pixel(t_img *img, int x, int y, int color);
+void	coordswap(t_coord *a, t_coord *b);
 
 /* minimap/map_checking.c */
 void	parse_map(t_data *data);
 void	draw_tile(t_data *data, char c, t_coord *pen);
-int	select_color(char c);
-int is_onmap(char c);
+int		select_color(char c);
+int		is_onmap(char c);
 
-/* raycast/pos.c */
+/* minimap/player.c */
+t_pos	search_player(t_data *data);
+void	set_player(t_data *data);
+void	set_arrow_point(t_player* player, t_arrow *arrow);
+int		is_player_mmap(char c);
 
 /* mlxinit.c */
-void  init_map(t_data *data);
-void init_win(t_data *data);
+void	init_map(t_data *data);
+void	init_win(t_data *data);
 
 /* raycast/draw.c */
-
+int interpolate_x(t_coord p1, t_coord p2, int y);
+void	fill_triangle(t_data *data, t_coord p1, t_coord p2, t_coord p3);
+void	draw_line(t_data *data, t_coord a, t_coord b);
+void	calc_line(t_coord *d, t_coord *s, t_coord *a, int *err);
 
 #endif
