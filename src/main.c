@@ -29,23 +29,25 @@ int	main(int ac, char **av)
 	check_flood_fill(&map_data);
 	display_map_data(&map_data);
 
+	init_images_walls(&map_data);
+
 	// check map
 	// check_walls_horizontal(&map_data);
 	// check_walls_vertical(&map_data);
 	// check_allowed_caracters(&map_data);
 
-	/*
-	printf("NO : %s\n", data.map_data.no);
-	printf("SO : %s\n", data.map_data.so);
-	printf("WE : %s\n", data.map_data.we);
-	printf("EA : %s\n", data.map_data.ea);
-	printf("C : %s\n", data.map_data.cc);
-	printf("F : %s\n", data.map_data.cf);
-	while (i < 14)
-	{
-		printf("ligne %d : %s\n", i, data.map_data.map[i]);
-		i++;
-	} */
+
+	printf("NO : %s\n", map_data.no );
+	printf("SO : %s\n", map_data.so);
+	printf("WE : %s\n", map_data.we);
+	printf("EA : %s\n", map_data.ea);
+	// printf("C : %s\n", data.map_data.cc);
+	// printf("F : %s\n", data.map_data.cf);
+	// while (i < 14)
+	// {
+	// 	printf("ligne %d : %s\n", i, data.map_data.map[i]);
+	// 	i++;
+	// } 
 	// init_win(&data);
 	// init_map(&data);
 	// mlx_loop_hook(data.mlx, set_minimap, &data);

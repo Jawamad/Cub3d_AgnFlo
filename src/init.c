@@ -188,8 +188,8 @@ int	create_map_for_game(t_map_data  *map_data)
 
 void init_images_walls(t_map_data  *map_data)
 {
-	map_data->no = "./assetes/ea.png";
-	map_data->so = "./assetes/no.png";
-	map_data->we = "./assetes/so.png";
-	map_data->ea = "./assetes/we.png";
+	map_data->no = "./assets/ea.png";
+	map_data->so = "./assets/no.png";
+	map_data->we = "./assets/so.png";
+	map_data->ea = "./assets/we.png";
 }

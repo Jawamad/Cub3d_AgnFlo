@@ -94,6 +94,7 @@ char	**manage_temp(t_map_data  *map_data, char *line);
 int	save_line_in_map(t_map_data  *map_data, char *line);
 int	create_map(t_map_data  *map_data);
 int	create_map_for_game(t_map_data  *map_data);
+void init_images_walls(t_map_data  *map_data);
 
 /*src/parsing.c*/
 int	check_extension_file_name(char *name);
