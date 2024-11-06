@@ -51,6 +51,11 @@ typedef struct s_map_data{
 	int				width;
 	int				height;
 	t_player		player;
+	int				player_pos_x;
+	int				player_pos_y;
+	int				check_pos_x;
+	int				check_pos_y;
+	int				map_error;
 	char			*no;
 	char			*so;
 	char			*we;
@@ -95,6 +100,8 @@ int	save_line_in_map(t_map_data  *map_data, char *line);
 int	create_map(t_map_data  *map_data);
 int	create_map_for_game(t_map_data  *map_data);
 void init_images_walls(t_map_data  *map_data);
+int	define_player_pos(t_map_data  *map_data);
+int	define_check_pos(t_map_data  *map_data);
 
 /*src/parsing.c*/
 int	check_extension_file_name(char *name);
@@ -106,6 +113,7 @@ int	check_allowed_caracters(t_map_data  *map_data);
 
 
 /*src/floodfill.c*/
+// void flood_map(t_map_data  *map_data, int x, int y);
 void	flood_map(t_map_data  *map_data, int x, int y);
 int	check_flood_fill(t_map_data  *map_data);
 

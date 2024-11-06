@@ -144,6 +144,7 @@ int	create_map(t_map_data  *map_data)
 	return (1);
 }
 
+
 /*nb_column,	nb_row, p_count, width, height */
 void display_map_data(t_map_data  *map_data)
 {
@@ -157,7 +158,15 @@ void display_map_data(t_map_data  *map_data)
 		x = 0;
 		while (x < map_data->width)
 		{
-			printf("%c", map_data->map[y][x]);
+			if (map_data->map[y][x] == '1')
+				printf("\033[31m%c\033[0m", map_data->map[y][x]);
+			else if (map_data->map[y][x] == 'F')
+				printf("\033[32m%c\033[0m", map_data->map[y][x]);
+			else if (map_data->map[y][x] == 'N' || map_data->map[y][x] == 'W' 
+					|| map_data->map[y][x] == 'E' || map_data->map[y][x] == 'S')
+				printf("\033[1;35m%c\033[0m", map_data->map[y][x]);
+			else
+				printf("%c", map_data->map[y][x]);
 			x++;
 		}
 		printf("\n");
@@ -192,4 +201,56 @@ void init_images_walls(t_map_data  *map_data)
 	map_data->so = "./assets/no.png";
 	map_data->we = "./assets/so.png";
 	map_data->ea = "./assets/we.png";
+}
+
+
+int	define_player_pos(t_map_data  *map_data)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < map_data->height)
+	{
+		x = 0;
+		while (x < map_data->width - 1)
+		{
+			if (map_data->map[y][x] == 'W' || map_data->map[y][x] == 'E'
+				|| map_data->map[y][x] == 'S' || map_data->map[y][x] == 'N')
+			{
+				map_data->player_pos_x = x;
+				map_data->player_pos_y = y;
+				return (1);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+int	define_check_pos(t_map_data  *map_data)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < map_data->height)
+	{
+		x = 0;
+		while (x < map_data->width - 1)
+		{
+			if (map_data->map[y][x] == '0')
+			{
+				map_data->check_pos_x = x;
+				map_data->check_pos_y = y;
+				// printf("%d", map_data->check_pos_x);
+				// printf("%d", map_data->check_pos_y);
+				return (1);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (0);
 }

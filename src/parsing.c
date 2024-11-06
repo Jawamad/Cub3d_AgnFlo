@@ -32,54 +32,53 @@ int	does_file_exist(char *name)
 	}
 	else
 	{
-		// ft_printf("file exist\n");
 		return (0);
 	}
 }
 
-int	check_walls_horizontal(t_map_data  *map_data)
-{
-	int	height;
-	int	width;
-	int	i;
+// int	check_walls_horizontal(t_map_data  *map_data)
+// {
+// 	int	height;
+// 	int	width;
+// 	int	i;
 
-	width = map_data->width;
-	height = map_data->height;
-	i = 0;
-	while (i < width - 1)
-	{
-		if (map_data->map[0][i] != '1' || map_data->map[height - 1][i] != '1')
-		{
-			printf("\n horizontal walls : error WALL error WALL error WALL \n");
-			return (0);
-		}
-		i++;
-	}
-	return (1);
-}
+// 	width = map_data->width;
+// 	height = map_data->height;
+// 	i = 0;
+// 	while (i < width - 1)
+// 	{
+// 		if (map_data->map[0][i] != '1' || map_data->map[height - 1][i] != '1')
+// 		{
+// 			printf("\n horizontal walls : error WALL error WALL error WALL \n");
+// 			return (0);
+// 		}
+// 		i++;
+// 	}
+// 	return (1);
+// }
 
-int	check_walls_vertical(t_map_data  *map_data)
-{
-	int	height;
-	int	width;
-	int	i;
+// int	check_walls_vertical(t_map_data  *map_data)
+// {
+// 	int	height;
+// 	int	width;
+// 	int	i;
 
-	width = map_data->width;
-	height = map_data->height;
-	i = 0;
-	printf("len : %d", width);
-	while (i < height)
-	{
-		if (map_data->map[i][width - 1] != '1' || map_data->map[i][0] != '1')
-		{
-			printf("vertical walls : error WALL error WALL error WALL \n");
-			return (0);
-		}
-		i++;
-	}
-	// printf("vertical walls : everything is okay \n");
-	return (1);
-}
+// 	width = map_data->width;
+// 	height = map_data->height;
+// 	i = 0;
+// 	printf("len : %d", width);
+// 	while (i < height)
+// 	{
+// 		if (map_data->map[i][width - 1] != '1' || map_data->map[i][0] != '1')
+// 		{
+// 			printf("vertical walls : error WALL error WALL error WALL \n");
+// 			return (0);
+// 		}
+// 		i++;
+// 	}
+// 	// printf("vertical walls : everything is okay \n");
+// 	return (1);
+// }
 
 int	check_allowed_caracters(t_map_data  *map_data)
 {

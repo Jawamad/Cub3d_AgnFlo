@@ -3,17 +3,13 @@
 
 int	main(int ac, char **av)
 {
-	// t_data	data;
 	t_map_data  map_data;
 	
-	//int i = 0;
-	(void)ac;
-
-	/* if (ac != 2)
-		ft_error(0);
-	check_exten(av[1]);
-	parsing(av, &data);
-	*/
+	if (ac != 2)
+	{
+		ft_printf("Error: wrong number of arguments\n");
+        return (0);
+	}
 	if (!check_extension_file_name(av[1]))
     {
         ft_printf("Error: invalid file extension\n");
@@ -22,14 +18,19 @@ int	main(int ac, char **av)
 	map_data.map_file = av[1];
     if (does_file_exist(map_data.map_file))
 	{
+		ft_printf("Error: the file does not exist\n");
         return (0);
 	}
-	
-	create_map_for_game(&map_data);
-	check_flood_fill(&map_data);
-	display_map_data(&map_data);
 
-	init_images_walls(&map_data);
+	// routine to check floodfill
+	create_map_for_game(&map_data);
+	display_map_data(&map_data);
+	define_check_pos(&map_data);
+	printf("\n");
+	check_flood_fill(&map_data);
+	// display_map_data(&map_data);
+
+	//init_images_walls(&map_data);
 
 	// check map
 	// check_walls_horizontal(&map_data);
@@ -37,10 +38,10 @@ int	main(int ac, char **av)
 	// check_allowed_caracters(&map_data);
 
 
-	printf("NO : %s\n", map_data.no );
-	printf("SO : %s\n", map_data.so);
-	printf("WE : %s\n", map_data.we);
-	printf("EA : %s\n", map_data.ea);
+	// printf("NO : %s\n", map_data.no );
+	// printf("SO : %s\n", map_data.so);
+	// printf("WE : %s\n", map_data.we);
+	// printf("EA : %s\n", map_data.ea);
 	// printf("C : %s\n", data.map_data.cc);
 	// printf("F : %s\n", data.map_data.cf);
 	// while (i < 14)
