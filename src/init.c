@@ -151,8 +151,12 @@ void display_map_data(t_map_data  *map_data)
 	int x;
 	int y;
 
-	//printf("%d",  map_data->width);
 	y = 0;
+	if (map_data == NULL || map_data->map == NULL)
+	{
+		printf("Error: the map doesn't exist");
+		return;
+	}
 	while (y < map_data->height)
 	{
 		x = 0;
@@ -173,7 +177,6 @@ void display_map_data(t_map_data  *map_data)
 		y++;
 	}	
 }
-
 
 int	create_map_for_game(t_map_data  *map_data)
 {
@@ -244,8 +247,6 @@ int	define_check_pos(t_map_data  *map_data)
 			{
 				map_data->check_pos_x = x;
 				map_data->check_pos_y = y;
-				// printf("%d", map_data->check_pos_x);
-				// printf("%d", map_data->check_pos_y);
 				return (1);
 			}
 			x++;

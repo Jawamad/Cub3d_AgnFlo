@@ -25,17 +25,21 @@ int	main(int ac, char **av)
 	// routine to check floodfill
 	create_map_for_game(&map_data);
 	display_map_data(&map_data);
+	
 	define_check_pos(&map_data);
 	printf("\n");
+	
 	check_flood_fill(&map_data);
 	display_map_data(&map_data);
 
-	//init_images_walls(&map_data);
-
-	// check map
-	// check_walls_horizontal(&map_data);
-	// check_walls_vertical(&map_data);
+	init_images_walls(&map_data);
 	// check_allowed_caracters(&map_data);
+	map_free_after_flood_fill(&map_data);
+
+	create_map_for_game(&map_data);
+	// display_map_data(&map_data);
+
+
 
 
 	// printf("NO : %s\n", map_data.no );

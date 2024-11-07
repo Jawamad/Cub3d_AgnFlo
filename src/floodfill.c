@@ -1,22 +1,23 @@
 #include "../inc/cub3d.h"
 
-// int	map_free_after_flood_fill(t_game *game)
-// {
-// 	int		nbr_of_lines;
+int	map_free_after_flood_fill(t_map_data *map_data)
+{
+	int		nbr_of_lines;
 
-// 	nbr_of_lines = 0;
-// 	if (game->map != NULL)
-// 	{
-// 		while (nbr_of_lines < game->map_height)
-// 		{
-// 			free(game->map[nbr_of_lines]);
-// 			game->map[nbr_of_lines] = NULL;
-// 			nbr_of_lines++;
-// 		}
-// 		free(game->map);
-// 	}
-// 	return (1);
-// }
+	nbr_of_lines = 0;
+	if (map_data->map != NULL)
+	{
+		while (nbr_of_lines < map_data->height)
+		{
+			free(map_data->map[nbr_of_lines]);
+			map_data->map[nbr_of_lines] = NULL;
+			nbr_of_lines++;
+		}
+		free(map_data->map);
+		// map_data->map = NULL;
+	}
+	return (1);
+}
 
 
 void flood_map(t_map_data *map_data, int x, int y)
