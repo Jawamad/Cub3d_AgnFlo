@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 	define_check_pos(&map_data);
 	printf("\n");
 	check_flood_fill(&map_data);
-	// display_map_data(&map_data);
+	display_map_data(&map_data);
 
 	//init_images_walls(&map_data);
 

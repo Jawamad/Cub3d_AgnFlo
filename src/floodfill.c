@@ -26,6 +26,20 @@ void flood_map(t_map_data *map_data, int x, int y)
         map_data->map_error = 1;
         return;
     }
+	
+	if (map_data->map[y][x] == '0')
+	{
+		if ((x > 0 && map_data->map[y][x - 1] == ' ') ||
+            (x < map_data->width - 1 && map_data->map[y][x + 1] == ' ') ||
+            (y > 0 && map_data->map[y - 1][x] == ' ') ||
+            (y < map_data->height - 1 && map_data->map[y + 1][x] == ' '))
+        {
+            map_data->map_error = 1;
+            return;
+        }
+
+	}
+
 
     if (map_data->map[y][x] == '1' || map_data->map[y][x] == 'F')
         return;
