@@ -1,12 +1,5 @@
 #include "../inc/cub3d.h"
 
-// allocating temp to size of map plus NULL
-// while map, pass everything in temp
-// pass new line in temp
-// if temp NULL, free temp
-// if strdup fails, free the already allocated memory
-// free game
-// pass content of temp in game->map
 int	if_temp_null(t_map_data  *map_data, char **temp)
 {
 	int		y;
@@ -97,7 +90,10 @@ int	create_map(t_map_data  *map_data)
 	height = 0;
 	fd = open(map_data->map_file, O_RDONLY);
 	if (fd < 0)
+	{
+		printf("error: cannot read file");
 		return (0);
+	}
 	ft_memset(map_data, 0, sizeof(t_map_data));
 	treated_line = get_next_line(fd);
 
@@ -138,19 +134,17 @@ int	create_map(t_map_data  *map_data)
 		free(treated_line);
 		treated_line = get_next_line(fd);
 	}
-	//printf("%d\n", map_data->height);
-	//printf("%d\n", map_data->width);
 	close(fd);
 	return (1);
 }
 
-
-/*nb_column,	nb_row, p_count, width, height */
 void display_map_data(t_map_data  *map_data)
 {
 	int x;
 	int y;
 
+	printf("\n");
+	printf("\n");
 	y = 0;
 	if (map_data == NULL || map_data->map == NULL)
 	{
@@ -175,7 +169,9 @@ void display_map_data(t_map_data  *map_data)
 		}
 		printf("\n");
 		y++;
-	}	
+	}
+	printf("\n");
+	printf("\n");
 }
 
 int	create_map_for_game(t_map_data  *map_data)
@@ -186,14 +182,8 @@ int	create_map_for_game(t_map_data  *map_data)
 		fflush(stdout);
 		return (0);
 	}
-	// map_len(game);
-	// if (!check_walls(game))
-	// 	return (0);
-	// if (!check_map(game))
-	// 	return (0);
 	else
 	{
-		//ft_printf("map created successfully\n");
 		return (1);
 	}
 }
@@ -205,7 +195,6 @@ void init_images_walls(t_map_data  *map_data)
 	map_data->we = "./assets/so.png";
 	map_data->ea = "./assets/we.png";
 }
-
 
 int	define_player_pos(t_map_data  *map_data)
 {

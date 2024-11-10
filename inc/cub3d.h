@@ -117,5 +117,7 @@ int	check_allowed_caracters(t_map_data  *map_data);
 void	flood_map(t_map_data  *map_data, int x, int y);
 int	check_flood_fill(t_map_data  *map_data);
 int	map_free_after_flood_fill(t_map_data *map_data);
+int routine_floodfill(t_map_data *map_data);
+int routine_parsing(t_map_data *map_data, int ac, char **av);
 
 #endif
