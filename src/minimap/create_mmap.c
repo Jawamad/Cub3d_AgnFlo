@@ -1,15 +1,14 @@
 #include "../../inc/cub3d.h"
 
-void	parse_map(t_data *data)
+void	parse_mmap(t_data *data)
 {
 	t_coord	checker;
 	t_coord	pen;
 
-	checker = create_coord(0,0);
+	checker = create_coord(0, 0);
 	pen = create_coord(TILE, TILE);
 	while (checker.y < data->map_data.height)
 	{
-		//printf("%d\n", data->map_data.width);
 		while (checker.x < data->map_data.width)
 		{
 			draw_tile(data, data->map_data.map[checker.y][checker.x], &pen);
@@ -52,9 +51,9 @@ int	select_color(char c)
 		return (0xFFFFFF);
 }
 
-int is_onmap(char c)
+int	is_onmap(char c)
 {
 	if (c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E')
-		return(1);
+		return (1);
 	return (0);
 }
