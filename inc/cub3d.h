@@ -89,6 +89,8 @@ typedef struct s_data{
 
 /* Fonctions */
 
+int parsing(int ac, char **av, t_data *data);
+
 /* input.c */
 void	action_key(t_data *data);
 int		handle_keypress(int keycode, t_data *data);
