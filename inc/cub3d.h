@@ -18,7 +18,6 @@
 # include <math.h>
 
 
-//#define M_PI       3.14159265358979323846;
 #define TILE 16
 #define SC_WIDTH 1200
 #define SC_HEIGHT 600
@@ -39,6 +38,10 @@ typedef struct s_pos{
 typedef struct s_player{
 	t_pos	ppos;
 	float	angle;
+	double	dirX;
+	double	dirY;
+	double	planeX;
+	double	planeY;
 }	t_player;
 
 typedef struct s_arrow{
@@ -77,6 +80,8 @@ typedef struct s_img{
 }	t_img;
 
 typedef struct s_data{
+	int			screenWidth;
+	int			screenHeight;
 	int			keycode;
 	int			key_pressed;
 	int			mouse_x;
@@ -163,7 +168,6 @@ int	check_allowed_caracters(t_map_data  *map_data);
 
 
 /*src/floodfill.c*/
-// void flood_map(t_map_data  *map_data, int x, int y);
 void	flood_map(t_map_data  *map_data, int x, int y);
 int	check_flood_fill(t_map_data  *map_data);
 int	map_free_after_flood_fill(t_map_data *map_data);
@@ -172,5 +176,11 @@ int routine_parsing(t_map_data *map_data, int ac, char **av);
 
 /* routine.c */
 int		loop_routine(t_data *data);
+
+/* raycasting */
+void	draw_ceiling(int x, int drawStart, t_data *data);
+void	draw_floor(int x, int drawEnd, t_data *data);
+void	verLine(int x, int drawStart, int drawEnd, unsigned char r, unsigned char g, unsigned char b, t_data *data);
+void	cast_rays_and_render(t_data *data);
 
 #endif

@@ -25,4 +25,8 @@ void	init_map(t_data *data)
 		data->map_data.player.angle /= 2;
 	else if (c == 'E')
 		data->map_data.player.angle = 0;
+	data->map_data.player.dirX = cos(data->map_data.player.angle);
+	data->map_data.player.dirY = sin(data->map_data.player.angle);
+	data->map_data.player.planeX = 0;
+	data->map_data.player.planeY = 0.66;
 }

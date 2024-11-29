@@ -90,15 +90,24 @@ int check_flood_fill(t_map_data *map_data)
 
 int routine_floodfill(t_map_data *map_data)
 {
-    if (!create_map_for_game(map_data)) // return 1
+    if (!create_map_for_game(map_data))
+    {
         return (0);
+    }
     //display_map_data(map_data);
 	if (!define_check_pos(map_data))
+     {
         return (0);
+     }   
+        
 	if (!check_flood_fill(map_data))
+    {
         return (0);
+    }
     if (!map_free_after_flood_fill(map_data))
-        return (0);
+     {
+      return (0);
+     }  
     return (1);
 }
 
