@@ -94,7 +94,6 @@ int routine_floodfill(t_map_data *map_data)
     {
         return (0);
     }
-    //display_map_data(map_data);
 	if (!define_check_pos(map_data))
      {
         return (0);

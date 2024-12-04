@@ -10,6 +10,9 @@ void	init_map(t_data *data)
 {
 	char	c;
 
+	data->screenWidth = SC_WIDTH;
+    data->screenHeight = SC_HEIGHT;
+	define_player_pos(&data->map_data);
 	data->map_data.player.angle = M_PI;
 	data->key_pressed = 0;
 	data->keycode = 0;
@@ -26,7 +29,9 @@ void	init_map(t_data *data)
 	else if (c == 'E')
 		data->map_data.player.angle = 0;
 	data->map_data.player.dirX = cos(data->map_data.player.angle);
+	printf("dirx %f\n",data->map_data.player.dirX);
 	data->map_data.player.dirY = sin(data->map_data.player.angle);
+	printf("diry %f\n",data->map_data.player.dirY);
 	data->map_data.player.planeX = 0;
 	data->map_data.player.planeY = 0.66;
 }

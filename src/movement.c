@@ -16,8 +16,8 @@ void	forward(t_map_data *map_data)
 
 	player.x = map_data->player.ppos.x;
 	player.y = map_data->player.ppos.y;
-	player.x += cos(map_data->player.angle) * SPEED;
-	player.y += sin(map_data->player.angle) * SPEED;
+	player.x += map_data->player.dirX * SPEED;
+	player.y += map_data->player.dirY * SPEED;
 	if (valid_pos(map_data, player))
 	{
 		map_data->player.ppos.x = player.x;
@@ -31,8 +31,8 @@ void	backward(t_map_data *map_data)
 
 	player.x = map_data->player.ppos.x;
 	player.y = map_data->player.ppos.y;
-	player.x -= cos(map_data->player.angle) * SPEED;
-	player.y -= sin(map_data->player.angle) * SPEED;
+	player.x -= map_data->player.dirX * SPEED;
+	player.y -= map_data->player.dirY * SPEED;
 	if (valid_pos(map_data, player))
 	{
 		map_data->player.ppos.x = player.x;

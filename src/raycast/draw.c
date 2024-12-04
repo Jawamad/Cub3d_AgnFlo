@@ -31,6 +31,7 @@ void draw_ceiling(int x, int drawStart, t_data *data)
     b = 0;
 
     y = 0;
+	printf("draw %d\n", drawStart);
     while (y < drawStart)
     {
         int pixel_index = (x + y * data->screenWidth) * (bpp / 8);

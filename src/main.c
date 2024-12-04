@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 int parsing(int ac, char **av, t_data *data)
 {
 	t_map_data  map_data;
-	
+
 	if (!routine_parsing(&map_data, ac, av))
 	{
 		printf("Error: parsing failed\n");
