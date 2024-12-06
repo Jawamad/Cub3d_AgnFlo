@@ -210,8 +210,8 @@ int	define_player_pos(t_map_data  *map_data)
 			if (map_data->map[y][x] == 'W' || map_data->map[y][x] == 'E'
 				|| map_data->map[y][x] == 'S' || map_data->map[y][x] == 'N')
 			{
-				map_data->player_pos_x = x;
-				map_data->player_pos_y = y;
+				map_data->player_pos_x = y;
+				map_data->player_pos_y = x;
 				return (1);
 			}
 			x++;

@@ -169,10 +169,10 @@ int	check_allowed_caracters(t_map_data  *map_data);
 
 /*src/floodfill.c*/
 void	flood_map(t_map_data  *map_data, int x, int y);
-int	check_flood_fill(t_map_data  *map_data);
-int	map_free_after_flood_fill(t_map_data *map_data);
-int routine_floodfill(t_map_data *map_data);
-int routine_parsing(t_map_data *map_data, int ac, char **av);
+int		check_flood_fill(t_map_data  *map_data);
+int		map_free_after_flood_fill(t_map_data *map_data);
+int		routine_floodfill(t_map_data *map_data);
+int		routine_parsing(t_map_data *map_data, int ac, char **av);
 
 /* routine.c */
 int		loop_routine(t_data *data);
@@ -182,6 +182,6 @@ void	draw_ceiling(int x, int drawStart, t_data *data);
 void	draw_floor(int x, int drawEnd, t_data *data);
 void	verLine(int x, int drawStart, int drawEnd, unsigned char r, unsigned char g, unsigned char b, t_data *data);
 void	cast_rays_and_render(t_data *data);
-void rotate(t_player *data, double rotSpeed, int direction);
+void	rotate(t_player *data, double rotSpeed, int direction);
 
 #endif
