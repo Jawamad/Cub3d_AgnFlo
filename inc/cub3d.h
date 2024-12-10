@@ -56,8 +56,8 @@ typedef struct s_map_data{
 	int				width;
 	int				height;
 	t_player		player;
-	int				player_pos_x;
-	int				player_pos_y;
+	double			player_pos_x;
+	double			player_pos_y;
 	int				check_pos_x;
 	int				check_pos_y;
 	int				map_error;

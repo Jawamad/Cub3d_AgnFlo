@@ -22,6 +22,8 @@ void	forward(t_map_data *map_data)
 	{
 		map_data->player.ppos.x = player.x;
 		map_data->player.ppos.y = player.y;
+		map_data->player_pos_x = player.y;
+		map_data->player_pos_y = player.x;
 	}
 }
 
