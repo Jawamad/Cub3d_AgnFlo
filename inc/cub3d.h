@@ -18,7 +18,7 @@
 # include <math.h>
 
 
-#define TILE 16
+#define TILE 8
 #define SC_WIDTH 1200
 #define SC_HEIGHT 600
 #define SPEED 0.1
@@ -110,7 +110,7 @@ void	strafe_left(t_map_data *map_data);
 void	strafe_right(t_map_data *map_data);
 void	forward(t_map_data *map_data);
 void	backward(t_map_data *map_data);
-int		valid_pos(t_map_data *map_data, t_pos player_pos);
+int	valid_pos(t_map_data *map_data, int x, int y);
 
 /* minimap/map_pos.c */
 t_pos	create_pos(float x, float y);

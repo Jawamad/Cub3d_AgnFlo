@@ -37,17 +37,17 @@ void	set_arrow_point(t_player *player, t_arrow *arrow)
 
 	arr_len = TILE / 2;
 	arr_width = TILE / 2;
-	arrow->head.x = round(((player->ppos.x * 16) + 16)
+	arrow->head.x = round(((player->ppos.x * TILE) + TILE)
 			+ cos(player->angle) * arr_len);
-	arrow->head.y = round(((player->ppos.y * 16) + 16)
+	arrow->head.y = round(((player->ppos.y * TILE) + TILE)
 			+ sin(player->angle) * arr_len);
-	arrow->left.x = round(((player->ppos.x * 16) + 16)
+	arrow->left.x = round(((player->ppos.x * TILE) + TILE)
 			+ cos(player->angle + M_PI / 2) * arr_width);
-	arrow->left.y = round(((player->ppos.y * 16) + 16)
+	arrow->left.y = round(((player->ppos.y * TILE) + TILE)
 			+ sin(player->angle + M_PI / 2) * arr_width);
-	arrow->right.x = round(((player->ppos.x * 16) + 16)
+	arrow->right.x = round(((player->ppos.x * TILE) + TILE)
 			+ cos(player->angle - M_PI / 2) * arr_width);
-	arrow->right.y = round(((player->ppos.y * 16) + 16)
+	arrow->right.y = round(((player->ppos.y * TILE) + TILE)
 			+ sin(player->angle - M_PI / 2) * arr_width);
 }
 

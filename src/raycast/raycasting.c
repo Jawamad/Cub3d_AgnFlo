@@ -41,7 +41,6 @@ void cast_rays_and_render(t_data *data)
         }
 
         // DDA
-        t_pos checkpos;
         while (hit == 0) 
         {
             if (sideDistX < sideDistY) {
@@ -53,8 +52,7 @@ void cast_rays_and_render(t_data *data)
                 mapY += stepY;
                 side = 1;
             }
-            checkpos = create_pos(mapY, mapX);
-            if (!valid_pos(&data->map_data, checkpos)) {
+            if (!valid_pos(&data->map_data, mapY, mapX)) {
                 hit = 1;
             }
         }
