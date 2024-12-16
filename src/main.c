@@ -15,6 +15,7 @@ int	main(int ac, char **av)
 	init_win(data);
 	init_map(data);
 	init_img(data);
+	init_texture(data);
 	mlx_hook(data->mlx_win, 2, 1L << 0, handle_keypress, data);
 	mlx_hook(data->mlx_win, 6, 1L << 6, handle_mouse_move, data);
 	mlx_loop_hook(data->mlx, loop_routine, data);

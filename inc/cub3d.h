@@ -25,6 +25,19 @@
 #define GAME_NAME "Cub3d"
 /* Structure */
 
+typedef struct s_texture
+{
+	void	*img;
+	// char	*addr;
+	unsigned int *addr;  // 1D array of pixels
+	int		bits_per_pixels;
+	int		line_length;
+	int		endian;
+	int		height;
+	int		width;
+	char	*path;
+}	t_texture;
+
 typedef struct s_coord{
 	int	x;
 	int	y;
@@ -82,14 +95,22 @@ typedef struct s_img{
 typedef struct s_data{
 	int			screenWidth;
 	int			screenHeight;
-	int			keycode;
-	int			key_pressed;
-	int			mouse_x;
 	void		*mlx;
 	void		*mlx_win;
 	t_img		*img;
+	t_texture	texture[4];
+	unsigned int **wall;
+	int			keycode;
+	int			key_pressed;
+	int			mouse_x;
 	t_map_data	map_data;
 }	t_data;
+
+typedef struct {
+	int	r;
+	int	g;
+	int	b;
+} ColorRGB;
 
 
 /* Fonctions */
@@ -180,8 +201,15 @@ int		loop_routine(t_data *data);
 /* raycasting */
 void	draw_ceiling(int x, int drawStart, t_data *data);
 void	draw_floor(int x, int drawEnd, t_data *data);
-void	verLine(int x, int drawStart, int drawEnd, unsigned char r, unsigned char g, unsigned char b, t_data *data);
+void verLine(int x, int drawStart, int drawEnd, t_data *data, int textureIndex, int textureX);
 void	cast_rays_and_render(t_data *data);
 void	rotate(t_player *data, double rotSpeed, int direction);
+
+/* init texture */
+void init_walls(t_data *data, int i);
+void allocate_wall(t_data *data);
+void printAllPixels(t_data *data, int i);
+void init_texture(t_data *data);
+
 
 #endif
