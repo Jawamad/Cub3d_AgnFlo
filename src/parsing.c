@@ -35,7 +35,7 @@ int	does_file_exist(char *name)
 	}
 }
 
-int	check_allowed_caracters(t_map_data  *map_data)
+int	check_allowed_caracters(t_map_data *map_data)
 {
 	int	x;
 	int	y;

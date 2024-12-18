@@ -48,36 +48,41 @@ int	interpolate_x(t_coord p1, t_coord p2, int y)
 	return (p1.x + (y - p1.y) * (p2.x - p1.x) / (p2.y - p1.y));
 }
 
-void	fill_triangle(t_data *data, t_coord p1, t_coord p2, t_coord p3)
+void	fill_triangle(t_data *data, t_arrow *player)
 {
 	int		y;
 	t_coord	start;
 	t_coord	end;
 
-	if (p1.y > p2.y)
-		coordswap(&p1, &p2);
-	if (p1.y > p3.y)
-		coordswap(&p1, &p3);
-	if (p2.y > p3.y)
-		coordswap(&p2, &p3);
-	y = p1.y;
-	while (y <= p2.y)
+	if (player->head.y > player->left.y)
+		coordswap(&player->head, &player->left);
+	if (player->head.y > player->right.y)
+		coordswap(&player->head, &player->right);
+	if (player->left.y > player->right.y)
+		coordswap(&player->left, &player->right);
+	y = player->head.y;
+	while (y <= player->left.y)
 	{
-		start.x = interpolate_x(p1, p3, y);
-		start.y = y;
-		end.x = interpolate_x(p1, p2, y);
-		end.y = y;
+		fill_part(&start, &end, player, y);
 		draw_line(data, start, end);
 		y++;
 	}
-	y = p2.y;
-	while (y <= p3.y)
+	y = player->left.y;
+	while (y <= player->right.y)
 	{
-		start.x = interpolate_x(p1, p3, y);
-		start.y = y;
-		end.x = interpolate_x(p2, p3, y);
-		end.y = y;
+		fill_part(&start, &end, player, y);
 		draw_line(data, start, end);
 		y++;
 	}
+}
+
+void	fill_part(t_coord *start, t_coord *end, t_arrow *player, int y)
+{
+	start->x = interpolate_x(player->head, player->right, y);
+	start->y = y;
+	if (y >= player->left.y)
+		end->x = interpolate_x(player->left, player->right, y);
+	else
+		end->x = interpolate_x(player->head, player->right, y);
+	end->y = y;
 }

@@ -24,7 +24,7 @@ void	set_player(t_data *data)
 	t_arrow	player_a;
 
 	set_arrow_point(&data->map_data.player, &player_a);
-	fill_triangle(data, player_a.head, player_a.left, player_a.right);
+	fill_triangle(data, &player_a);
 	draw_line(data, player_a.head, player_a.left);
 	draw_line(data, player_a.left, player_a.right);
 	draw_line(data, player_a.head, player_a.right);

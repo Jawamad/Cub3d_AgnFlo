@@ -168,19 +168,21 @@ void	calc_plane(t_player *player);
 
 /* raycast/draw.c */
 int		interpolate_x(t_coord p1, t_coord p2, int y);
-void	fill_triangle(t_data *data, t_coord p1, t_coord p2, t_coord p3);
+void	fill_triangle(t_data *data, t_arrow *player);
 void	draw_line(t_data *data, t_coord a, t_coord b);
 void	calc_line(t_coord *d, t_coord *s, t_coord *a, int *err);
+void	fill_part(t_coord *start, t_coord *end, t_arrow *player, int y);
 
-/*src/init.c*/
-int	if_temp_null(t_map_data  *map_data, char **temp);
+/*init.c*/
+int		if_temp_null(t_map_data  *map_data, char **temp);
 char	**manage_temp(t_map_data  *map_data, char *line);
-int	save_line_in_map(t_map_data  *map_data, char *line);
-int	create_map(t_map_data  *map_data);
-int	create_map_for_game(t_map_data  *map_data);
-void init_images_walls(t_map_data  *map_data);
-int	define_player_pos(t_map_data  *map_data);
-int	define_check_pos(t_map_data  *map_data);
+int		save_line_in_map(t_map_data  *map_data, char *line);
+int		create_map(t_map_data  *map_data);
+void	treat_line(char *treated_line, t_map_data *map_data);
+int		create_map_for_game(t_map_data  *map_data);
+void	init_images_walls(t_map_data  *map_data);
+int		define_player_pos(t_map_data  *map_data);
+int		define_check_pos(t_map_data  *map_data);
 
 /*src/parsing.c*/
 int	check_extension_file_name(char *name);

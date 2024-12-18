@@ -8,17 +8,24 @@ void	turn_left(t_map_data *map_data)
 void	turn_right(t_map_data *map_data)
 {
 	rotate(&map_data->player, 0.01, -1);
-	map_data->player.angle = atan2(map_data->player.dirX, map_data->player.dirY);
+	map_data->player.angle = atan2(map_data->player.dirX,
+			map_data->player.dirY);
 }
 
-void rotate(t_player *data, double rotSpeed, int direction) {
-    double oldDirX = data->dirX;
-    double oldPlaneX = data->planeX;
+void	rotate(t_player *data, double rotSpeed, int direction)
+{
+	double	old_dir_x;
+	double	old_plane_x;
 
-    data->dirX = data->dirX * cos(rotSpeed * direction) - data->dirY * sin(rotSpeed * direction);
-    data->dirY = oldDirX * sin(rotSpeed * direction) + data->dirY * cos(rotSpeed * direction);
-
-    data->planeX = data->planeX * cos(rotSpeed * direction) - data->planeY * sin(rotSpeed * direction);
-    data->planeY = oldPlaneX * sin(rotSpeed * direction) + data->planeY * cos(rotSpeed * direction);
+	old_dir_x = data->dirX;
+	old_plane_x = data->planeX;
+	data->dirX = data->dirX * cos(rotSpeed * direction)
+		- data->dirY * sin(rotSpeed * direction);
+	data->dirY = old_dir_x * sin(rotSpeed * direction)
+		+ data->dirY * cos(rotSpeed * direction);
+	data->planeX = data->planeX * cos(rotSpeed * direction)
+		- data->planeY * sin(rotSpeed * direction);
+	data->planeY = old_plane_x * sin(rotSpeed * direction)
+		+ data->planeY * cos(rotSpeed * direction);
 	data->angle = atan2(data->dirX, data->dirY);
 }

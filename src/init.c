@@ -1,6 +1,6 @@
 #include "../inc/cub3d.h"
 
-int	if_temp_null(t_map_data  *map_data, char **temp)
+int	if_temp_null(t_map_data *map_data, char **temp)
 {
 	int		y;
 
@@ -18,7 +18,7 @@ int	if_temp_null(t_map_data  *map_data, char **temp)
 	return (1);
 }
 
-char	**manage_temp(t_map_data  *map_data, char *line)
+char	**manage_temp(t_map_data *map_data, char *line)
 {
 	char	**temp;
 	int		i;
@@ -42,153 +42,7 @@ char	**manage_temp(t_map_data  *map_data, char *line)
 	return (temp);
 }
 
-int	save_line_in_map(t_map_data  *map_data, char *line)
-{
-	char	**temp;
-
-	if (!line)
-		return (0);
-	map_data->height++;
-	temp = manage_temp(map_data, line);
-	if (map_data->map)
-		free(map_data->map);
-	map_data->map = temp;
-	return (1);
-}
-
-int is_map_line(const char *line)
-{
-	int i = 0;
-
-	if (strncmp(line, "NO", 2) == 0 || strncmp(line, "SO", 2) == 0 ||
-		strncmp(line, "WE", 2) == 0 || strncmp(line, "EA", 2) == 0 ||
-		strncmp(line, "F", 1) == 0 || strncmp(line, "C", 1) == 0)
-	{
-		return 0;
-	}
-
-	while (line[i])
-	{
-		if (line[i] != '0' && line[i] != '1' && line[i] != ' ' && line[i] != '\n' && 
-			line[i] != 'N' && line[i] != 'S' && line[i] != 'E' && line[i] != 'W')
-		{
-			return 0;
-		}
-		i++;
-	}
-	return 1;
-}
-
-int	create_map(t_map_data  *map_data)
-{
-	int		fd;
-	int		height;	
-	char	*treated_line;
-	int		width;
-	int	i;
-
-	height = 0;
-	fd = open(map_data->map_file, O_RDONLY);
-	if (fd < 0)
-	{
-		printf("error: cannot read file");
-		return (0);
-	}
-	ft_memset(map_data, 0, sizeof(t_map_data));
-	treated_line = get_next_line(fd);
-
-	if (!treated_line)
-		return (close(fd), 0);
-
-
-	while (treated_line)
-	{
-		width = 0;
-		i = 0;
-		if (is_map_line(treated_line) && *treated_line != '\n')
-		{
-			while (treated_line[i] != '\n' && treated_line[i] != '\0')
-			{
-				if (treated_line[i] == '\t')
-				{
-					width += 4;
-				}
-				else
-					width++;
-				i++;
-			}
-			treated_line[i] = '\0';
-			// y = 0;
-			// while (treated_line[y])
-			// {
-			// 	printf("%c", treated_line[y]);
-			// 	y++;
-			// }
-			// printf("\n width %d\n", width);
-			if (map_data->width < width)
-				map_data->width = width;
-			save_line_in_map(map_data, treated_line);
-			height++;
-		}
-		
-		free(treated_line);
-		treated_line = get_next_line(fd);
-	}
-	close(fd);
-	return (1);
-}
-
-void display_map_data(t_map_data  *map_data)
-{
-	int x;
-	int y;
-
-	printf("\n");
-	printf("\n");
-	y = 0;
-	if (map_data == NULL || map_data->map == NULL)
-	{
-		printf("Error: the map doesn't exist");
-		return;
-	}
-	while (y < map_data->height)
-	{
-		x = 0;
-		while (x < map_data->width)
-		{
-			if (map_data->map[y][x] == '1')
-				printf("\033[31m%c\033[0m", map_data->map[y][x]);
-			else if (map_data->map[y][x] == 'F')
-				printf("\033[32m%c\033[0m", map_data->map[y][x]);
-			else if (map_data->map[y][x] == 'N' || map_data->map[y][x] == 'W' 
-					|| map_data->map[y][x] == 'E' || map_data->map[y][x] == 'S')
-				printf("\033[1;35m%c\033[0m", map_data->map[y][x]);
-			else
-				printf("%c", map_data->map[y][x]);
-			x++;
-		}
-		printf("\n");
-		y++;
-	}
-	printf("\n");
-	printf("\n");
-}
-
-int	create_map_for_game(t_map_data  *map_data)
-{
-	if (!create_map(map_data))
-	{
-		ft_printf("Error: Failed to create map\n");
-		fflush(stdout);
-		return (0);
-	}
-	else
-	{
-		return (1);
-	}
-}
-
-void init_images_walls(t_map_data  *map_data)
+void	init_images_walls(t_map_data *map_data)
 {
 	map_data->no = "./assets/ea.png";
 	map_data->so = "./assets/no.png";
@@ -196,7 +50,7 @@ void init_images_walls(t_map_data  *map_data)
 	map_data->ea = "./assets/we.png";
 }
 
-int	define_player_pos(t_map_data  *map_data)
+int	define_player_pos(t_map_data *map_data)
 {
 	int	x;
 	int	y;
@@ -221,7 +75,7 @@ int	define_player_pos(t_map_data  *map_data)
 	return (0);
 }
 
-int	define_check_pos(t_map_data  *map_data)
+int	define_check_pos(t_map_data *map_data)
 {
 	int	x;
 	int	y;
