@@ -23,6 +23,7 @@
 #define SC_HEIGHT 600
 #define SPEED 0.1
 #define GAME_NAME "Cub3d"
+#define FOV 66
 /* Structure */
 
 typedef struct s_coord{
@@ -52,7 +53,6 @@ typedef struct s_arrow{
 
 typedef struct s_map_data{
 	char			**map;
-	int				p_count;
 	int				width;
 	int				height;
 	t_player		player;
@@ -65,10 +65,7 @@ typedef struct s_map_data{
 	char			*so;
 	char			*we;
 	char			*ea;
-	char			*cc;
-	char			*cf;
-	int				count_line;
-	char	*map_file;
+	char			*map_file;
 }	t_map_data;
 
 typedef struct s_img{
@@ -95,6 +92,7 @@ typedef struct s_data{
 /* Fonctions */
 
 int parsing(int ac, char **av, t_data *data);
+int too_many_player(t_map_data map_data);
 
 /* input.c */
 void	action_key(t_data *data);
@@ -121,6 +119,7 @@ void	put_pixel(t_img *img, int x, int y, int color);
 void	init_img(t_data *data);
 
 /* utils.c */
+void	free_map_data(t_map_data *map_data);
 void	free_array(char **array);
 void	coordswap(t_coord *a, t_coord *b);
 void	clean_all(t_data *data);
@@ -133,7 +132,7 @@ int		select_color(char c);
 int		is_onmap(char c);
 
 /* minimap/player.c */
-t_pos	search_player(t_data *data);
+//t_pos	search_player(t_data *data);
 void	set_player(t_data *data);
 void	set_arrow_point(t_player* player, t_arrow *arrow);
 int		is_player_mmap(char c);
@@ -141,6 +140,7 @@ int		is_player_mmap(char c);
 /* mlxinit.c */
 void	init_map(t_data *data);
 void	init_win(t_data *data);
+void	calc_plane(t_player *player);
 
 /* raycast/draw.c */
 int		interpolate_x(t_coord p1, t_coord p2, int y);
