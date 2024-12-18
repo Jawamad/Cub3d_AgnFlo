@@ -29,24 +29,60 @@ void	free_map_data(t_map_data *map_data)
 	if (map_data->map_file != NULL)
 		free(map_data->map_file);
 }
+
+void	free_img(t_data *data)
+{
+	if (data->img != NULL)
+	{
+		if(data->img->img_ptr != NULL)
+		{
+			mlx_destroy_image(data->mlx, data->img->img_ptr);
+			data->img->img_ptr = NULL;
+		}
+	}
+	free(data->img);
+	data->img = NULL;
+}
+void free_texture(t_texture *texture, void *mlx)
+{
+	if (texture->img)
+		mlx_destroy_image(mlx, texture->img);
+	if (texture->addr)
+		free(texture->addr);
+	if (texture->path)
+		free(texture->path);
+}
+void	free_wall(unsigned int **wall)
+{
+	int	i;
+
+	i = 0;
+	while (wall[i] != NULL)
+	{
+		free(wall[i]);
+		i++;
+	}
+	free(wall);
+}
+
 void	clean_all(t_data *data)
 {
-	if (data->map_data.map[0] != NULL)
-		free_array(data->map_data.map);
-	if (data->map_data.no != NULL)
-		free(data->map_data.no);
-	if (data->map_data.so != NULL)
-		free(data->map_data.so);
-	if (data->map_data.we != NULL)
-		free(data->map_data.we);
-	if (data->map_data.ea != NULL)
-		free(data->map_data.ea);
-	//free(data->img->img_ptr);
-	//free(data->img->addr);
-	//free(data->img);
-	//free(data->mlx_win);
-	free(data->mlx);
-	free(data);
+	/* int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		free_texture(&data->texture[i], data->mlx);
+		i++;
+	} */
+	free_img(data);
+	free_map_data(&data->map_data);
+	free_wall(data->wall);
+	if (data->mlx_win)
+		mlx_destroy_window(data->mlx, data->mlx_win);
+	mlx_destroy_display(data->mlx);
+	if(data->mlx)
+		free(data->mlx);
 }
 
 void	coordswap(t_coord *a, t_coord *b)

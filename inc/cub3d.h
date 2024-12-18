@@ -119,6 +119,7 @@ int too_many_player(t_map_data map_data);
 void	action_key(t_data *data);
 int		handle_keypress(int keycode, t_data *data);
 int		handle_mouse_move(int x, int y, t_data *data);
+int		close_and_clean(t_data *data);
 
 /* camera.c */
 void	turn_left(t_map_data *map_data);
@@ -144,6 +145,9 @@ void	free_map_data(t_map_data *map_data);
 void	free_array(char **array);
 void	coordswap(t_coord *a, t_coord *b);
 void	clean_all(t_data *data);
+void	free_wall(unsigned int **wall);
+void	free_texture(t_texture *texture, void *mlx);
+void	free_img(t_data *data);
 
 /* minimap/create_mmap.c */
 int		loop_routine(t_data *data);
@@ -153,7 +157,6 @@ int		select_color(char c);
 int		is_onmap(char c);
 
 /* minimap/player.c */
-//t_pos	search_player(t_data *data);
 void	set_player(t_data *data);
 void	set_arrow_point(t_player* player, t_arrow *arrow);
 int		is_player_mmap(char c);
