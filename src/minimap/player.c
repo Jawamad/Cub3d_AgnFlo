@@ -1,6 +1,6 @@
 #include "../../inc/cub3d.h"
 
-t_pos	search_player(t_data *data)
+/* t_pos	search_player(t_data *data)
 {
 	t_pos	pos;
 
@@ -17,7 +17,7 @@ t_pos	search_player(t_data *data)
 		}
 	}
 	return (pos);
-}
+} */
 
 void	set_player(t_data *data)
 {

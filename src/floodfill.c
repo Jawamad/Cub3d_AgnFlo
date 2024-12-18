@@ -70,7 +70,7 @@ int check_flood_fill(t_map_data *map_data)
                 if (map_data->map_error == 1)
                 {
                     printf("Error: map is not closed\n");
-                    exit(1);
+                    return(0);
                 }
                 x = 0;
                 y = 0;
@@ -115,23 +115,24 @@ int routine_parsing(t_map_data *map_data, int ac, char **av)
     if (ac != 2)
 	{
 		ft_printf("Error: wrong number of arguments\n");
-        exit(1);
+        return(0);
 	}
 	if (!check_extension_file_name(av[1]))
     {
         ft_printf("Error: invalid file extension\n");
-        exit(1);
+        return(0);
     }
 	map_data->map_file = av[1];
     if (does_file_exist(map_data->map_file))
 	{
 		ft_printf("Error: the file does not exist\n");
-        exit(1);
+        return(0);
 	}
     if (!routine_floodfill(map_data))
     {
+        free_map_data(map_data);
         printf("Error: flood fill check failed\n");
-        exit(1);
+        return(0);
     }
     return (1);
 }

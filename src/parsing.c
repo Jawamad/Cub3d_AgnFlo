@@ -27,7 +27,6 @@ int	does_file_exist(char *name)
 	fd = open(name, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("the file does not exist\n");
 		return (1);
 	}
 	else

@@ -13,7 +13,7 @@ void	init_map(t_data *data)
 	char	c;
 
 	data->screenWidth = SC_WIDTH;
-    data->screenHeight = SC_HEIGHT;
+	data->screenHeight = SC_HEIGHT;
 	define_player_pos(&data->map_data);
 	data->map_data.player.angle = M_PI;
 	data->key_pressed = 0;
@@ -28,10 +28,16 @@ void	init_map(t_data *data)
 		data->map_data.player.angle /= 2;
 	else if (c == 'E')
 		data->map_data.player.angle = 0;
-	data->map_data.player.dirX = -1;
-	data->map_data.player.dirY = 0;
-	/* data->map_data.player.dirX = cos(data->map_data.player.angle);
-	data->map_data.player.dirY = sin(data->map_data.player.angle); */
-	data->map_data.player.planeX = 0;
-	data->map_data.player.planeY = 0.66;
+	data->map_data.player.dirX = sin(data->map_data.player.angle);
+	data->map_data.player.dirY = cos(data->map_data.player.angle);
+	calc_plane(&data->map_data.player);
+}
+
+void	calc_plane(t_player *player)
+{
+	double planescale;
+
+	planescale = tan((FOV * M_PI / 180) / 2);
+	player->planeX = player->dirY * planescale;
+	player->planeY = -player->dirX * planescale;
 }
