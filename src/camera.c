@@ -2,12 +2,14 @@
 
 void	turn_left(t_map_data *map_data)
 {
-	rotate(&map_data->player, 0.01, 1);
+	rotate(&map_data->player, ROT_SPEED, 1);
+	map_data->player.angle = atan2(map_data->player.dirX,
+			map_data->player.dirY);
 }
 
 void	turn_right(t_map_data *map_data)
 {
-	rotate(&map_data->player, 0.01, -1);
+	rotate(&map_data->player, ROT_SPEED, -1);
 	map_data->player.angle = atan2(map_data->player.dirX,
 			map_data->player.dirY);
 }

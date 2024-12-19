@@ -16,12 +16,16 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <math.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
+# include <X11/Xlib.h>
 
 
 #define TILE 8
 #define SC_WIDTH 1200
 #define SC_HEIGHT 600
-#define SPEED 0.1
+#define SPEED 0.05
+#define ROT_SPEED 0.02
 #define GAME_NAME "Cub3d"
 #define FOV 66
 /* Structure */
@@ -97,8 +101,8 @@ typedef struct s_data{
 	t_img		*img;
 	t_texture	texture[4];
 	unsigned int **wall;
-	int			keycode;
-	int			key_pressed;
+	char		keys[256];
+	//int			key_pressed;
 	int			mouse_x;
 	t_map_data	map_data;
 }	t_data;
@@ -112,6 +116,8 @@ typedef struct {
 
 /* Fonctions */
 
+int key_release(int keycode, t_data *data);
+int key_press(int keycode, t_data *data);
 int parsing(int ac, char **av, t_data *data);
 int too_many_player(t_map_data map_data);
 

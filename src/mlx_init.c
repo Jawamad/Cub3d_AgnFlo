@@ -14,8 +14,8 @@ void	init_map(t_data *data)
 	data->screenHeight = SC_HEIGHT;
 	define_player_pos(&data->map_data);
 	data->map_data.player.angle = M_PI;
-	data->key_pressed = 0;
-	data->keycode = 0;
+	/* data->key_pressed = 0;
+	data->keycode = 0; */
 	data->mouse_x = SC_WIDTH / 2;
 	data->map_data.player.ppos.x = data->map_data.player_pos_y;
 	data->map_data.player.ppos.y = data->map_data.player_pos_x;
