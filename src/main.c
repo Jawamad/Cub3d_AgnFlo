@@ -12,6 +12,7 @@ int	main(int ac, char **av)
 	init_win(&data);
 	init_map(&data);
 	init_img(&data);
+	init_images_walls(&data);
 	init_texture(&data);
 	mlx_hook(data.mlx_win, KeyPress, KeyPressMask, key_press, &data);
 	mlx_hook(data.mlx_win, KeyRelease, KeyReleaseMask, key_release, &data);

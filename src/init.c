@@ -42,13 +42,7 @@ char	**manage_temp(t_map_data *map_data, char *line)
 	return (temp);
 }
 
-void	init_images_walls(t_map_data *map_data)
-{
-	map_data->no = "./assets/ea.png";
-	map_data->so = "./assets/no.png";
-	map_data->we = "./assets/so.png";
-	map_data->ea = "./assets/we.png";
-}
+
 
 int	define_player_pos(t_map_data *map_data)
 {

@@ -8,11 +8,9 @@ void verLine(int x, int drawStart, int drawEnd, t_data *data, int textureIndex, 
 
     int textureWidth = data->texture[textureIndex].width;
     int textureHeight = data->texture[textureIndex].height;
-    
     double step = (double)textureHeight / (drawEnd - drawStart);
     double texturePos = 0.0;
     // int textureX = (x % textureWidth);
-
     for (y = drawStart; y < drawEnd; y++)
 	{
         int textureY = (int)texturePos % textureHeight;
@@ -23,9 +21,10 @@ void verLine(int x, int drawStart, int drawEnd, t_data *data, int textureIndex, 
         unsigned char green = (pixel >> 8) & 0xFF;
         unsigned char blue = pixel & 0xFF;
         int pixel_index = (x + y * data->screenWidth) * (bpp / 8);
-        img_data[pixel_index] = red;
-        img_data[pixel_index + 1] = green;
-        img_data[pixel_index + 2] = blue;
+        
+		img_data[pixel_index + 2] = red;
+		img_data[pixel_index + 1] = green;
+		img_data[pixel_index] = blue;
     }
 }
 
