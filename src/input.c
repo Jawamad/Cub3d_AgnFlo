@@ -1,11 +1,11 @@
 #include "../inc/cub3d.h"
 
-int	handle_keypress(int keycode, t_data *data)
+/* int	handle_keypress(int keycode, t_data *data)
 {
 	data->key_pressed = 1;
 	data->keycode = keycode;
 	return (0);
-}
+} */
 
 int	handle_mouse_move(int x, int y, t_data *data)
 {
@@ -18,7 +18,7 @@ int	handle_mouse_move(int x, int y, t_data *data)
 	return (1);
 }
 
-void	action_key(t_data *data)
+/* void	action_key(t_data *data)
 {
 	if (data->keycode == 65307)
 		close_and_clean(data);
@@ -34,7 +34,7 @@ void	action_key(t_data *data)
 		strafe_left(&data->map_data);
 	else if (data->keycode == 100)
 		strafe_right(&data->map_data);
-}
+} */
 
 int	close_and_clean(t_data *data)
 {

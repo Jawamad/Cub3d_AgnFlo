@@ -2,11 +2,20 @@
 
 int	loop_routine(t_data *data)
 {
-	if (data->key_pressed == 1)
-	{
-		action_key(data);
-		data->key_pressed = 0;
-	}
+	if (data->keys[2])
+		close_and_clean(data);
+	if (data->keys[XK_w])
+		forward(&data->map_data);
+	if (data->keys[XK_s])
+		backward(&data->map_data);
+	if (data->keys[XK_a])
+		strafe_left(&data->map_data);
+	if (data->keys[XK_d])
+		strafe_right(&data->map_data);
+	if (data->keys[0])
+		rotate(&data->map_data.player, ROT_SPEED, 1);
+	if (data->keys[1])
+		rotate(&data->map_data.player, ROT_SPEED, -1);
 	cast_rays_and_render(data);
 	parse_mmap(data);
 	set_player(data);
