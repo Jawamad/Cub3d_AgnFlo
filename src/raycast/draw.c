@@ -21,9 +21,10 @@ void verLine(int x, int drawStart, int drawEnd, t_data *data, int textureIndex, 
         unsigned char green = (pixel >> 8) & 0xFF;
         unsigned char blue = pixel & 0xFF;
         int pixel_index = (x + y * data->screenWidth) * (bpp / 8);
-        img_data[pixel_index] = red;
-        img_data[pixel_index + 1] = green;
-        img_data[pixel_index + 2] = blue;
+        
+		img_data[pixel_index + 2] = red;
+		img_data[pixel_index + 1] = green;
+		img_data[pixel_index] = blue;
     }
 }
 
