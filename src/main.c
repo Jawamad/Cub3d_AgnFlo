@@ -33,7 +33,7 @@ int key_press(int keycode, t_data *data)
 		if (keycode == XK_Right)
 			data->keys[1] = 1;
 		if (keycode == XK_Escape)
-			data->keys[2] = 0;
+			data->keys[2] = 1;
 	}
 	return (0);
 }
