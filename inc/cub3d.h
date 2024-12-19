@@ -180,7 +180,6 @@ int		save_line_in_map(t_map_data  *map_data, char *line);
 int		create_map(t_map_data  *map_data);
 void	treat_line(char *treated_line, t_map_data *map_data);
 int		create_map_for_game(t_map_data  *map_data);
-void	init_images_walls(t_map_data  *map_data);
 int		define_player_pos(t_map_data  *map_data);
 int		define_check_pos(t_map_data  *map_data);
 
@@ -211,8 +210,10 @@ void	cast_rays_and_render(t_data *data);
 void	rotate(t_player *data, double rotSpeed, int direction);
 
 /* init texture */
-void init_walls(t_data *data, int i);
-void allocate_wall(t_data *data);
+void init_images_walls(t_data *data);
+// void init_walls(t_data *data, int i);
+// void allocate_wall(t_data *data);
+void allocate_wall(t_data *data, int i);
 void printAllPixels(t_data *data, int i);
 void init_texture(t_data *data);
 
