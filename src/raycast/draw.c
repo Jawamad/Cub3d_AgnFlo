@@ -8,8 +8,6 @@ void verLine(int x, int drawStart, int drawEnd, t_data *data, int textureIndex, 
 
     int textureWidth = data->texture[textureIndex].width;
     int textureHeight = data->texture[textureIndex].height;
-    printf(" textureWidth %d\n",  textureWidth);
-	 printf(" textureHeight %d\n",  textureHeight);
     double step = (double)textureHeight / (drawEnd - drawStart);
     double texturePos = 0.0;
     // int textureX = (x % textureWidth);
