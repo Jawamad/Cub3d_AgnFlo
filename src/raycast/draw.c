@@ -46,9 +46,9 @@ void draw_ceiling(int x, int drawStart, t_data *data)
     while (y < drawStart)
     {
         int pixel_index = (x + y * data->screenWidth) * (bpp / 8);
-        img_data[pixel_index] = r;   // Red
-        img_data[pixel_index + 1] = g;   // Green
-        img_data[pixel_index + 2] = b;       // Blue
+        img_data[pixel_index] = r;
+        img_data[pixel_index + 1] = g;
+        img_data[pixel_index + 2] = b;
         y++;
     }
 }
@@ -71,9 +71,9 @@ void draw_floor(int x, int drawEnd, t_data *data)
     while (y < data->screenHeight)
     {
         int pixel_index = (x + y * data->screenWidth) * (bpp / 8);
-        img_data[pixel_index] = r;   // Red
-        img_data[pixel_index + 1] = g;   // Green
-        img_data[pixel_index + 2] = b;       // Blue
+        img_data[pixel_index] = r;
+        img_data[pixel_index + 1] = g;
+        img_data[pixel_index + 2] = b;
         y++;
     }
 }

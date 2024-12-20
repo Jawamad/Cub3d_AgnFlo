@@ -222,6 +222,17 @@ void init_images_walls(t_data *data);
 void allocate_wall(t_data *data, int i);
 void printAllPixels(t_data *data, int i);
 void init_texture(t_data *data);
+// void init_texture(t_data *data);
+
+/* init2.c*/
+int	retreive_infos_textures(t_data *data, t_map_data *map_data, char **av);
+// int	retreive_infos_textures(t_data *data, char **av);
+
+// int	retreive_infos_textures(t_map_data *map_data, char **av);
+// void retreive_textures(char *treat_line);
+void retreive_colors(char *treated_line);
+
+void retreive_textures(t_data *data, char *treated_line);
 
 
 #endif

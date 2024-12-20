@@ -49,6 +49,7 @@ int	create_map(t_map_data *map_data)
 		printf("error: cannot read file");
 		return (0);
 	}
+	printf("create map MAP FILE %s\n", map_data->map_file);
 	ft_memset(map_data, 0, sizeof(t_map_data));
 	treated_line = get_next_line(fd);
 	if (!treated_line)

@@ -113,11 +113,13 @@ int	routine_parsing(t_map_data *map_data, int ac, char **av)
 		ft_printf("Error: the file does not exist\n");
 		return (0);
 	}
+	printf("routine parsing MAP FILE %s\n",map_data->map_file);
 	if (!routine_floodfill(map_data))
 	{
 		free_map_data(map_data);
 		printf("Error: flood fill check failed\n");
 		return (0);
 	}
+	printf("routine parsing MAP FILE %s\n",map_data->map_file);
 	return (1);
 }

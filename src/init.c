@@ -92,3 +92,4 @@ int	define_check_pos(t_map_data *map_data)
 	}
 	return (0);
 }
+
