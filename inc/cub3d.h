@@ -107,11 +107,11 @@ typedef struct s_data{
 	t_map_data	map_data;
 }	t_data;
 
-typedef struct {
-	int	r;
-	int	g;
-	int	b;
-} ColorRGB;
+// typedef struct {
+// 	int	r;
+// 	int	g;
+// 	int	b;
+// } ColorRGB;
 
 
 /* Fonctions */

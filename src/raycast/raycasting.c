@@ -71,28 +71,6 @@ void cast_rays_and_render(t_data *data)
             drawEnd = h - 1;
         }
 
-         // Déterminer la couleur
-        unsigned char r, g, b;
-
-		if (data->map_data.map[mapX][mapY] == 1){
-			r = 255; g = 0; b = 0;   // Rouge
-		} else if (data->map_data.map[mapX][mapY] == 2) {
-			r = 0;   g = 255; b = 0;   // Vert
-		} else if (data->map_data.map[mapX][mapY] == 3) {
-			r = 0;   g = 0;   b = 255; // Bleu
-		} else if (data->map_data.map[mapX][mapY] == 4) {
-			r = 255; g = 255; b = 255; // Blanc
-		} else {
-			r = 255; g = 255; b = 0;   // Jaune (par défaut)
-		}
-
-        // Assombrir la couleur si le côté est 1
-        if (side == 1) {
-            r /= 2;
-            g /= 2;
-            b /= 2;
-        }
-
 		double wallX; 
         if (side == 0) {
             wallX = data->map_data.player_pos_y + perpWallDist * rayDirY;
