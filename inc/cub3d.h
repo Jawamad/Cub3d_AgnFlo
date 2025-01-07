@@ -53,6 +53,11 @@ typedef struct s_pos{
 	float	y;
 }	t_pos;
 
+typedef struct s_dpos{
+	double	x;
+	double	y;
+}	t_dpos;
+
 typedef struct s_player{
 	t_pos	ppos;
 	float	angle;
@@ -94,17 +99,17 @@ typedef struct s_img{
 }	t_img;
 
 typedef struct s_data{
-	int			screenWidth;
-	int			screenHeight;
-	void		*mlx;
-	void		*mlx_win;
-	t_img		*img;
-	t_texture	texture[4];
-	unsigned int **wall;
-	char		keys[256];
-	//int			key_pressed;
-	int			mouse_x;
-	t_map_data	map_data;
+	int				screenWidth;
+	int				screenHeight;
+	void			*mlx;
+	void			*mlx_win;
+	t_img			*img;
+	t_texture		texture[4];
+	t_dpos			raydir;
+	unsigned int	**wall;
+	char			keys[256];
+	int				mouse_x;
+	t_map_data		map_data;
 }	t_data;
 
 // typedef struct {
@@ -234,5 +239,20 @@ void retreive_colors(char *treated_line);
 
 void retreive_textures(t_data *data, char *treated_line);
 
+
+
+void	calc_deltadist(t_data *data, t_dpos *deltadist);
+void	calc_sidedist(t_data *data, t_dpos *sidedist, t_coord *map, t_dpos deltadist);
+void	init_step(t_data *data,t_coord *step);
+void	init_perp_wall_d(int side, double *perp_wall_d, t_dpos sidedist, t_dpos deltadist);
+// void	init_perp_wall_d(int *side, double *perp_wall_d, t_dpos sidedist, t_dpos deltadist);
+void	calc_dist(t_data *data, t_coord *map, int *side, double *perp_wall_d);
+// void	draw_define(int	perp_wall_d, int *drawstart, int *drawend);
+void	draw_define(double perp_wall_d, int *drawstart, int *drawend);
+void	calc_wallx(double *wallx, t_data *data, int side, double perp_wall_d);
+int	get_textureindex(t_data *data, int side);
+int	raycast(t_data *data, int *drawstart, int *drawend, int *texturex);
+void	init_raydir(t_data *data, int x);
+int	get_texturex(t_data *data, double wallx, int side);
 
 #endif
