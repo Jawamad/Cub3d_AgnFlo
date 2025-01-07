@@ -5,9 +5,7 @@ int	retreive_infos_textures(t_data *data, t_map_data *map_data, char **av)
 	int		fd;
 	char	*treated_line;
 
-	data->map_data.map_file = av[1];
-	fd = open(data->map_data.map_file, O_RDONLY);	
-
+	fd = open(av[1], O_RDONLY);	
 	if (fd < 0)
 	{
 		printf("error: cannot read file");
@@ -32,15 +30,6 @@ int	retreive_infos_textures(t_data *data, t_map_data *map_data, char **av)
 
 void retreive_textures(t_data *data, char *treated_line)
 {
-	// int i;
-
-	// i = 0;
-	// while (i < 4)
-	// {
-	// 	data->texture[i].path = malloc(100 * sizeof(char));
-	// 	i++;
-	// }
-
 	if (strncmp(treated_line, "NO ", 3) == 0)
     {
         char *path;

@@ -74,9 +74,9 @@ int	check_flood_fill(t_map_data *map_data)
 	return (1);
 }
 
-int	routine_floodfill(t_map_data *map_data)
+int	routine_floodfill(t_map_data *map_data, char * map_file)
 {
-	if (!create_map_for_game(map_data))
+	if (!create_map_for_game(map_data, map_file))
 	{
 		return (0);
 	}
@@ -107,19 +107,18 @@ int	routine_parsing(t_map_data *map_data, int ac, char **av)
 		ft_printf("Error: invalid file extension\n");
 		return (0);
 	}
-	map_data->map_file = av[1];
-	if (does_file_exist(map_data->map_file))
+	if (does_file_exist(av[1]))
 	{
 		ft_printf("Error: the file does not exist\n");
 		return (0);
 	}
-	printf("routine parsing MAP FILE %s\n",map_data->map_file);
-	if (!routine_floodfill(map_data))
+	printf("routine parsing MAP FILE %s\n",av[1]);
+	if (!routine_floodfill(map_data, av[1]))
 	{
 		free_map_data(map_data);
 		printf("Error: flood fill check failed\n");
 		return (0);
 	}
-	printf("routine parsing MAP FILE %s\n",map_data->map_file);
+	printf("routine parsing MAP FILE %s\n",av[1]);
 	return (1);
 }

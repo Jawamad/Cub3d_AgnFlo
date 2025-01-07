@@ -26,8 +26,6 @@ void	free_map_data(t_map_data *map_data)
 		free(map_data->we);
 	if (map_data->ea != NULL)
 		free(map_data->ea);
-	if (map_data->map_file != NULL)
-		free(map_data->map_file);
 }
 
 void	free_img(t_data *data)

@@ -28,6 +28,7 @@
 #define ROT_SPEED 0.02
 #define GAME_NAME "Cub3d"
 #define FOV 66
+#define BUFFER_DIST 10
 /* Structure */
 
 typedef struct s_texture
@@ -87,7 +88,6 @@ typedef struct s_map_data{
 	char			*so;
 	char			*we;
 	char			*ea;
-	char			*map_file;
 }	t_map_data;
 
 typedef struct s_img{
@@ -141,7 +141,8 @@ void	strafe_left(t_map_data *map_data);
 void	strafe_right(t_map_data *map_data);
 void	forward(t_map_data *map_data);
 void	backward(t_map_data *map_data);
-int	valid_pos(t_map_data *map_data, int x, int y);
+int	valid_pos(t_map_data *map_data, float x, float y);
+// int	valid_pos(t_map_data *map_data, float x, float y);
 
 /* minimap/map_pos.c */
 t_pos	create_pos(float x, float y);
@@ -188,9 +189,9 @@ void	fill_part(t_coord *start, t_coord *end, t_arrow *player, int y);
 int		if_temp_null(t_map_data  *map_data, char **temp);
 char	**manage_temp(t_map_data  *map_data, char *line);
 int		save_line_in_map(t_map_data  *map_data, char *line);
-int		create_map(t_map_data  *map_data);
+int		create_map(t_map_data  *map_data, char* map_file);
 void	treat_line(char *treated_line, t_map_data *map_data);
-int		create_map_for_game(t_map_data  *map_data);
+int	create_map_for_game(t_map_data *map_data, char* map_file);
 int		define_player_pos(t_map_data  *map_data);
 int		define_check_pos(t_map_data  *map_data);
 
@@ -207,7 +208,7 @@ int	check_allowed_caracters(t_map_data  *map_data);
 void	flood_map(t_map_data  *map_data, int x, int y);
 int		check_flood_fill(t_map_data  *map_data);
 int		map_free_after_flood_fill(t_map_data *map_data);
-int		routine_floodfill(t_map_data *map_data);
+int	routine_floodfill(t_map_data *map_data, char * map_file);
 int		routine_parsing(t_map_data *map_data, int ac, char **av);
 
 /* routine.c */
