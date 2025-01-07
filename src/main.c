@@ -13,6 +13,7 @@ int	main(int ac, char **av)
 	init_win(&data);
 	init_map(&data);
 	init_img(&data);
+	printf("je suis la \n");
 	// init_images_walls(&data);
 	// WIP
 	// retreive_infos_textures(&data, av);
@@ -22,7 +23,6 @@ int	main(int ac, char **av)
 	int i = 0;
 	while (i < 4)
 		printf("path to texture %s \n", data.texture[i++].path);
-	printf("je suis la \n");
 	init_texture(&data);
 	mlx_hook(data.mlx_win, KeyPress, KeyPressMask, key_press, &data);
 	mlx_hook(data.mlx_win, KeyRelease, KeyReleaseMask, key_release, &data);

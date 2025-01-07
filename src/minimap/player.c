@@ -1,24 +1,5 @@
 #include "../../inc/cub3d.h"
 
-/* t_pos	search_player(t_data *data)
-{
-	t_pos	pos;
-
-	pos = create_pos(0, 0);
-	while (data->map_data.map[(int)pos.y][(int)pos.x])
-	{
-		if (!is_player_mmap(data->map_data.map[(int)pos.y][(int)pos.x]))
-			return (pos);
-		pos.x++;
-		if (pos.x >= data->map_data.width)
-		{
-			pos.x = 0;
-			pos.y++;
-		}
-	}
-	return (pos);
-} */
-
 void	set_player(t_data *data)
 {
 	t_arrow	player_a;

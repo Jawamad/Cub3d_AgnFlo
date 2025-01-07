@@ -251,8 +251,9 @@ void	calc_dist(t_data *data, t_coord *map, int *side, double *perp_wall_d);
 void	draw_define(double perp_wall_d, int *drawstart, int *drawend);
 void	calc_wallx(double *wallx, t_data *data, int side, double perp_wall_d);
 int	get_textureindex(t_data *data, int side);
+// int	get_texturex(t_data *data, double wallx, int side, double distance_to_wall);
 int	raycast(t_data *data, int *drawstart, int *drawend, int *texturex);
 void	init_raydir(t_data *data, int x);
 int	get_texturex(t_data *data, double wallx, int side);
-
+// int	get_texturex(t_data *data, double wallx, int side, double perp_wall_d);
 #endif

@@ -4,6 +4,9 @@ int	valid_pos(t_map_data *map_data, int x, int y)
 {
 	char	c;
 
+	if (x < 0 || x >= map_data->width || y < 0 || y >= map_data->height)
+        return (0);  // En dehors des limites de la carte
+
 	c = map_data->map[y][x];
 	if (c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E')
 		return (1);
