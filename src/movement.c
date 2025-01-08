@@ -2,10 +2,31 @@
 
 
 
-int	valid_pos(t_map_data *map_data, float x, float y)
+int valid_pos(t_map_data *map_data, float x, float y)
+{
+    char c;
+
+    c = map_data->map[(int)y][(int)x];
+    if (c != '0' && c != 'N' && c != 'S' && c != 'W' && c != 'E')
+        return (0);
+
+    // Check the buffer zone around the player
+    if (fabs(x - floor(x)) < BUFFER_DIST && map_data->map[(int)y][(int)x - 1] == '1')
+        return (0); // Too close to the wall on the left
+    if (fabs(x - ceil(x)) < BUFFER_DIST && map_data->map[(int)y][(int)x + 1] == '1')
+        return (0); // Too close to the wall on the right
+    if (fabs(y - floor(y)) < BUFFER_DIST && map_data->map[(int)y - 1][(int)x] == '1')
+        return (0); // Too close to the wall above
+    if (fabs(y - ceil(y)) < BUFFER_DIST && map_data->map[(int)y + 1][(int)x] == '1')
+        return (0); // Too close to the wall below
+
+    return (1);
+}
+
+/* int	valid_pos(t_map_data *map_data, float x, float y)
 {
 	char	c;
-	printf("x %f y%f\n", x, y);
+
 	if (fabs(x - floor(x)) < BUFFER_DIST && map_data->map[(int)y][(int)x] == 'W')
 	{
         return (0); // Too close to the wall on the left
@@ -20,7 +41,7 @@ int	valid_pos(t_map_data *map_data, float x, float y)
 		return (1);
 
 	return (0);
-}
+} */
 
 void	forward(t_map_data *map_data)
 {

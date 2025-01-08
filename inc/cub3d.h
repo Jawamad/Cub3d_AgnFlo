@@ -24,11 +24,11 @@
 #define TILE 8
 #define SC_WIDTH 1200
 #define SC_HEIGHT 600
-#define SPEED 0.05
+#define SPEED 0.1
 #define ROT_SPEED 0.02
 #define GAME_NAME "Cub3d"
 #define FOV 66
-#define BUFFER_DIST 10
+#define BUFFER_DIST 0.05
 /* Structure */
 
 typedef struct s_texture
@@ -110,6 +110,7 @@ typedef struct s_data{
 	char			keys[256];
 	int				mouse_x;
 	t_map_data		map_data;
+	int				line_height;
 }	t_data;
 
 // typedef struct {
@@ -125,6 +126,7 @@ int key_release(int keycode, t_data *data);
 int key_press(int keycode, t_data *data);
 int parsing(int ac, char **av, t_data *data);
 int too_many_player(t_map_data map_data);
+int	iswall(t_map_data *map_data, int x, int y);
 
 /* input.c */
 void	action_key(t_data *data);
@@ -249,7 +251,7 @@ void	init_perp_wall_d(int side, double *perp_wall_d, t_dpos sidedist, t_dpos del
 // void	init_perp_wall_d(int *side, double *perp_wall_d, t_dpos sidedist, t_dpos deltadist);
 void	calc_dist(t_data *data, t_coord *map, int *side, double *perp_wall_d);
 // void	draw_define(int	perp_wall_d, int *drawstart, int *drawend);
-void	draw_define(double perp_wall_d, int *drawstart, int *drawend);
+int	draw_define(double perp_wall_d, int *drawstart, int *drawend);
 void	calc_wallx(double *wallx, t_data *data, int side, double perp_wall_d);
 int	get_textureindex(t_data *data, int side);
 int	raycast(t_data *data, int *drawstart, int *drawend, int *texturex);

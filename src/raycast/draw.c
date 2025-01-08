@@ -8,7 +8,8 @@ void verLine(int x, int drawStart, int drawEnd, t_data *data, int textureIndex, 
 
     int textureWidth = data->texture[textureIndex].width;
     int textureHeight = data->texture[textureIndex].height;
-    double step = (double)textureHeight / (drawEnd - drawStart);
+    double step = (double)textureHeight / data->line_height;
+    //double step = (double)textureHeight / (drawEnd - drawStart);
     double texturePos = 0.0;
     // int textureX = (x % textureWidth);
     for (y = drawStart; y < drawEnd; y++)

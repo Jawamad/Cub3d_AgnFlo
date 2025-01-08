@@ -52,13 +52,13 @@ void	calc_dist(t_data *data, t_coord *map, int *side, double *perp_wall_d)
 			map->y += step.y;
 			*side = 1;
 		}
-		if (!valid_pos(&data->map_data, map->y, map->x))
+		if (!iswall(&data->map_data, map->y, map->x))
 			hit = 1;
 	}
 	init_perp_wall_d(*side, perp_wall_d, sidedist, deltadist);
 }
 
-void	draw_define(double perp_wall_d, int *drawstart, int *drawend)
+int	draw_define(double perp_wall_d, int *drawstart, int *drawend)
 {
 	int	lineHeight;
 
@@ -69,6 +69,7 @@ void	draw_define(double perp_wall_d, int *drawstart, int *drawend)
 	*drawend = lineHeight / 2 + SC_HEIGHT / 2;
 	if (*drawend >= SC_HEIGHT)
 		*drawend = SC_HEIGHT - 1;
+	return (lineHeight);
 }
 
 void	calc_wallx(double *wallx, t_data *data, int side, double perp_wall_d)
@@ -110,7 +111,7 @@ int	raycast(t_data *data, int *drawstart, int *drawend, int *texturex)
 	map.x = (int)data->map_data.player_pos_x;
 	map.y = (int)data->map_data.player_pos_y;
 	calc_dist(data, &map, &side, &perp_wall_d);
-	draw_define(perp_wall_d, drawstart, drawend);
+	data->line_height = draw_define(perp_wall_d, drawstart, drawend);
 	calc_wallx(&wallx, data, side, perp_wall_d);
 	*texturex = get_texturex(data, wallx, side);
 	return (side);

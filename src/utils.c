@@ -20,3 +20,13 @@ void	coordswap(t_coord *a, t_coord *b)
 	*a = *b;
 	*b = c;
 }
+
+int	iswall(t_map_data *map_data, int x, int y)
+{
+	char	c;
+
+	c = map_data->map[y][x];
+	if (c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E')
+		return (1);
+	return (0);
+}
