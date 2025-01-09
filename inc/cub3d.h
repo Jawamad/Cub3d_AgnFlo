@@ -98,6 +98,13 @@ typedef struct s_img{
 	int		endian;
 }	t_img;
 
+typedef struct s_color {
+	unsigned char r;
+	unsigned char g;
+	unsigned char b;
+} t_color;
+
+
 typedef struct s_data{
 	int				screenWidth;
 	int				screenHeight;
@@ -108,6 +115,8 @@ typedef struct s_data{
 	t_dpos			raydir;
 	unsigned int	**wall;
 	char			keys[256];
+	t_color			*colors_floor;
+	t_color			*colors_ceiling;
 	int				mouse_x;
 	t_map_data		map_data;
 }	t_data;
@@ -193,6 +202,7 @@ void	treat_line(char *treated_line, t_map_data *map_data);
 int		create_map_for_game(t_map_data  *map_data);
 int		define_player_pos(t_map_data  *map_data);
 int		define_check_pos(t_map_data  *map_data);
+void allocate_colors(t_data *data);
 
 /*src/parsing.c*/
 int	check_extension_file_name(char *name);
@@ -220,6 +230,13 @@ void verLine(int x, int drawStart, int drawEnd, t_data *data, int textureIndex, 
 void	cast_rays_and_render(t_data *data);
 void	rotate(t_player *data, double rotSpeed, int direction);
 
+/* retreive_colors.c*/
+void retreive_colors(char *treated_line, t_data *data);
+void retrieve_colors_floor(char *treated_line, t_data *data);
+void assign_r_g_b_floor(t_data *data, int z, int color_value);
+void retrieve_colors_ceiling(char *treated_line, t_data *data);
+void assign_r_g_b_ceiling(t_data *data, int z, int color_value);
+
 /* init texture */
 void init_images_walls(t_data *data);
 // void init_walls(t_data *data, int i);
@@ -235,7 +252,7 @@ int	retreive_infos_textures(t_data *data, t_map_data *map_data, char **av);
 
 // int	retreive_infos_textures(t_map_data *map_data, char **av);
 // void retreive_textures(char *treat_line);
-void retreive_colors(char *treated_line);
+// void retreive_colors(char *treated_line);
 
 void retreive_textures(t_data *data, char *treated_line);
 

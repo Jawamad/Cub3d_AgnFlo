@@ -23,24 +23,18 @@ int	retreive_infos_textures(t_data *data, t_map_data *map_data, char **av)
 	while (treated_line)
 	{
 		retreive_textures(data, treated_line);
+		retreive_colors(treated_line, data);
 		free(treated_line);
 		treated_line = get_next_line(fd);
 	}
+	printf(" data floor r g b %d %d %d \n", data->colors_floor->r,  data->colors_floor->g,  data->colors_floor->b);	
+	printf(" data ceiling r g b %d %d %d \n", data->colors_ceiling->r,  data->colors_ceiling->g,  data->colors_ceiling->b);	
 	close(fd);
 	return (1);
 }
 
 void retreive_textures(t_data *data, char *treated_line)
 {
-	// int i;
-
-	// i = 0;
-	// while (i < 4)
-	// {
-	// 	data->texture[i].path = malloc(100 * sizeof(char));
-	// 	i++;
-	// }
-
 	if (strncmp(treated_line, "NO ", 3) == 0)
     {
         char *path;
@@ -111,10 +105,3 @@ void retreive_textures(t_data *data, char *treated_line)
     }
 }
 
-void retreive_colors(char *treated_line)
-{
-	if (strncmp(treated_line, "C ", 2) == 0)
-		printf("%s", treated_line);
-	else if (strncmp(treated_line, "F ", 2) == 0)
-		printf("%s", treated_line);
-}

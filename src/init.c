@@ -18,6 +18,12 @@ int	if_temp_null(t_map_data *map_data, char **temp)
 	return (1);
 }
 
+void allocate_colors(t_data *data)
+{
+	data->colors_floor = malloc(sizeof(t_color));
+	data->colors_ceiling = malloc(sizeof(t_color));
+}
+
 char	**manage_temp(t_map_data *map_data, char *line)
 {
 	char	**temp;

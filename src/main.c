@@ -12,6 +12,7 @@ int	main(int ac, char **av)
 	printf("MAP FILE %s\n", data.map_data.map_file);
 	init_win(&data);
 	init_map(&data);
+	allocate_colors(&data);
 	init_img(&data);
 	printf("je suis la \n");
 	// init_images_walls(&data);
