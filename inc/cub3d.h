@@ -33,8 +33,7 @@
 typedef struct s_texture
 {
 	void	*img;
-	// char	*addr;
-	unsigned int *addr;  // 1D array of pixels
+	unsigned int *addr;
 	int		bits_per_pixels;
 	int		line_length;
 	int		endian;
@@ -121,15 +120,7 @@ typedef struct s_data{
 	t_map_data		map_data;
 }	t_data;
 
-// typedef struct {
-// 	int	r;
-// 	int	g;
-// 	int	b;
-// } ColorRGB;
-
-
 /* Fonctions */
-
 int key_release(int keycode, t_data *data);
 int key_press(int keycode, t_data *data);
 int parsing(int ac, char **av, t_data *data);
@@ -239,39 +230,26 @@ void assign_r_g_b_ceiling(t_data *data, int z, int color_value);
 
 /* init texture */
 void init_images_walls(t_data *data);
-// void init_walls(t_data *data, int i);
-// void allocate_wall(t_data *data);
 void allocate_wall(t_data *data, int i);
 void printAllPixels(t_data *data, int i);
 void init_texture(t_data *data);
-// void init_texture(t_data *data);
 
 /* init2.c*/
 int	retreive_infos_textures(t_data *data, t_map_data *map_data, char **av);
-// int	retreive_infos_textures(t_data *data, char **av);
-
-// int	retreive_infos_textures(t_map_data *map_data, char **av);
-// void retreive_textures(char *treat_line);
-// void retreive_colors(char *treated_line);
-
 void retreive_textures(t_data *data, char *treated_line);
 
 
 
 void	calc_deltadist(t_data *data, t_dpos *deltadist);
 void	calc_sidedist(t_data *data, t_dpos *sidedist, t_coord *map, t_dpos deltadist);
-// void	c_sdedst(t_data *data, t_dpos *deltadist); // calculate side dist
 void	init_step(t_data *data,t_coord *step);
 void	init_perp_wall_d(int side, double *perp_wall_d, t_dpos sidedist, t_dpos deltadist);
-// void	init_perp_wall_d(int *side, double *perp_wall_d, t_dpos sidedist, t_dpos deltadist);
 void	calc_dist(t_data *data, t_coord *map, int *side, double *perp_wall_d);
-// void	draw_define(int	perp_wall_d, int *drawstart, int *drawend);
 void	draw_define(double perp_wall_d, int *drawstart, int *drawend);
 void	calc_wallx(double *wallx, t_data *data, int side, double perp_wall_d);
 int	get_textureindex(t_data *data, int side);
-// int	get_texturex(t_data *data, double wallx, int side, double distance_to_wall);
 int	raycast(t_data *data, int *drawstart, int *drawend, int *texturex);
 void	init_raydir(t_data *data, int x);
 int	get_texturex(t_data *data, double wallx, int side);
-// int	get_texturex(t_data *data, double wallx, int side, double perp_wall_d);
+
 #endif

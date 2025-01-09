@@ -15,7 +15,6 @@ void init_walls(t_data *data, int i)
 	printf("pointeur texture %p\n",  data->texture[i].addr);
 }
 
-// CHANGE
 void allocate_wall(t_data *data, int i)
 {
     if (data->wall == NULL) {
@@ -26,6 +25,7 @@ void allocate_wall(t_data *data, int i)
 }
 
 void printAllPixels(t_data *data, int i) {
+	
     unsigned int *addr = data->texture[i].addr;
     int width = data->texture[i].width;
     int height = data->texture[i].height;

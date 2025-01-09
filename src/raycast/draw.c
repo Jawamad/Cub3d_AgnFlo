@@ -30,24 +30,19 @@ void verLine(int x, int drawStart, int drawEnd, t_data *data, int textureIndex, 
 void draw_ceiling(int x, int drawStart, t_data *data)
 {
     int y;
-    int bpp = 32;
-    char *img_data = data->img->addr;
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-
-    r = 0;  
-    g = 255; 
-    b = 0;
-
-    y = 0;
-	
+    int bpp;
+    char *img_data;
+	int pixel_index;
+    
+	img_data = data->img->addr;
+    bpp = 32;
+	y = 0;
     while (y < drawStart)
     {
-        int pixel_index = (x + y * data->screenWidth) * (bpp / 8);
-        img_data[pixel_index] = r;
-        img_data[pixel_index + 1] = g;
-        img_data[pixel_index + 2] = b;
+        pixel_index = (x + y * data->screenWidth) * (bpp / 8);
+        img_data[pixel_index] =  data->colors_floor->r;
+        img_data[pixel_index + 1] =  data->colors_floor->g;
+        img_data[pixel_index + 2] =  data->colors_floor->b;
         y++;
     }
 }
@@ -56,23 +51,19 @@ void draw_ceiling(int x, int drawStart, t_data *data)
 void draw_floor(int x, int drawEnd, t_data *data)
 {
     int y;
-    int bpp = 32;
-    char *img_data = data->img->addr;
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
+    int bpp;
+    char *img_data;
+	int pixel_index;
 
-    r = 0;  
-    g = 255; 
-    b = 0;
-
+	img_data = data->img->addr;
+	bpp = 32;
     y = drawEnd;
     while (y < data->screenHeight)
     {
-        int pixel_index = (x + y * data->screenWidth) * (bpp / 8);
-        img_data[pixel_index] = r;
-        img_data[pixel_index + 1] = g;
-        img_data[pixel_index + 2] = b;
+        pixel_index = (x + y * data->screenWidth) * (bpp / 8);
+        img_data[pixel_index] = data->colors_ceiling->r;
+        img_data[pixel_index + 1] = data->colors_ceiling->g;
+        img_data[pixel_index + 2] = data->colors_ceiling->b;
         y++;
     }
 }

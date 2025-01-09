@@ -15,10 +15,6 @@ int	main(int ac, char **av)
 	allocate_colors(&data);
 	init_img(&data);
 	printf("je suis la \n");
-	// init_images_walls(&data);
-	// WIP
-	// retreive_infos_textures(&data, av);
-	// retreive_infos_textures(&data.map_data, av);
 	retreive_infos_textures(&data, &data.map_data, av);
 	printf(" la %s \n", data.texture[0].path);
 	int i = 0;
