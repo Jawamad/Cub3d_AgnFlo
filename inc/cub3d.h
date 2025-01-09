@@ -243,6 +243,7 @@ void retreive_textures(t_data *data, char *treated_line);
 
 void	calc_deltadist(t_data *data, t_dpos *deltadist);
 void	calc_sidedist(t_data *data, t_dpos *sidedist, t_coord *map, t_dpos deltadist);
+// void	c_sdedst(t_data *data, t_dpos *deltadist); // calculate side dist
 void	init_step(t_data *data,t_coord *step);
 void	init_perp_wall_d(int side, double *perp_wall_d, t_dpos sidedist, t_dpos deltadist);
 // void	init_perp_wall_d(int *side, double *perp_wall_d, t_dpos sidedist, t_dpos deltadist);
