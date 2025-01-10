@@ -25,7 +25,6 @@ void	init_raydir(t_data *data)
 
 void	cast_rays_and_render(t_data *data)
 {
-	// int	x;
 	int	side;
 
 	data->verl_inf->x = 0;
@@ -33,11 +32,9 @@ void	cast_rays_and_render(t_data *data)
 	{
 		init_raydir(data);
 		side = raycast(data);
-		verLine(data, get_textureindex(data, side));
+		verline(data, get_textureindex(data, side));
 		draw_ceiling(data);
 		draw_floor(data);
 		data->verl_inf->x++;
 	}
 }
-
-

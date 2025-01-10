@@ -12,7 +12,7 @@
 
 #include "../../inc/cub3d.h"
 
-void	draw_define(double perp_wall_d, t_data *data) // 
+void	draw_define(double perp_wall_d, t_data *data)
 {
 	int	lineheight;
 
@@ -75,7 +75,6 @@ int	raycast(t_data *data)
 	calc_dist(data, &map, &side, &perp_wall_d);
 	draw_define(perp_wall_d, data);
 	calc_wallx(&wallx, data, side, perp_wall_d);
-	// *texturex = get_texturex(data, wallx, side);
-	data->verl_inf->texturex =  get_texturex(data, wallx, side);
+	data->verl_inf->texturex = get_texturex(data, wallx, side);
 	return (side);
 }

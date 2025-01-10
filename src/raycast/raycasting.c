@@ -65,13 +65,11 @@ void	calc_dist(t_data *data, t_coord *map, int *side, double *perp_wall_d)
 	t_dpos	sidedist;
 	t_dpos	deltadist;
 	t_coord	step;
-	int		hit;
 
 	calc_deltadist(data, &deltadist);
 	init_step(data, &step);
 	calc_sidedist(data, &sidedist, map, deltadist);
-	hit = 0;
-	while (hit == 0)
+	while (1)
 	{
 		if (sidedist.x < sidedist.y)
 		{
@@ -86,7 +84,7 @@ void	calc_dist(t_data *data, t_coord *map, int *side, double *perp_wall_d)
 			*side = 1;
 		}
 		if (!valid_pos(&data->map_data, map->y, map->x))
-			hit = 1;
+			break ;
 	}
 	init_perp_wall_d(*side, perp_wall_d, sidedist, deltadist);
 }

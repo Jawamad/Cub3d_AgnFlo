@@ -105,12 +105,20 @@ typedef struct s_color {
 } t_color;
 
 typedef struct s_verl_inf{
-	int	drawstart;
-	int drawend;
-	int texturex;
-	int x;
-	int textwidth;
-	int textheight;
+	int				drawstart;
+	int				drawend;
+	int				texturex;
+	int				x;
+	int				textwidth;
+	int				textheight;
+	double			step;
+	double			texturePos;
+	int				textureY;
+	unsigned int	pixel;
+	unsigned char	red;
+	unsigned char	green;
+	unsigned char	blue;
+	
 	// double texturePos;
 	// int textureIndex;
 }	t_verl_inf;
@@ -195,6 +203,7 @@ void	fill_triangle(t_data *data, t_arrow *player);
 void	draw_line(t_data *data, t_coord a, t_coord b);
 void	calc_line(t_coord *d, t_coord *s, t_coord *a, int *err);
 void	fill_part(t_coord *start, t_coord *end, t_arrow *player, int y);
+void	init_verline(t_data *data, int textureindex);
 
 /*init.c*/
 int		if_temp_null(t_map_data  *map_data, char **temp);
@@ -230,7 +239,7 @@ int		loop_routine(t_data *data);
 /* raycasting */
 void	draw_ceiling(t_data *data);
 void	draw_floor(t_data *data);
-void verLine(t_data *data, int textureIndex);
+void	verline(t_data *data, int textureindex);
 void	cast_rays_and_render(t_data *data);
 void	rotate(t_player *data, double rotSpeed, int direction);
 
@@ -244,7 +253,7 @@ void assign_r_g_b_ceiling(t_data *data, int z, int color_value);
 /* init texture */
 void init_images_walls(t_data *data);
 void allocate_wall(t_data *data, int i);
-void printAllPixels(t_data *data, int i);
+void print_all_pixels(t_data *data, int i);
 void init_texture(t_data *data);
 
 /* init2.c*/
