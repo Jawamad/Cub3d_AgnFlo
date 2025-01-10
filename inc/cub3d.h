@@ -28,6 +28,7 @@
 #define ROT_SPEED 0.02
 #define GAME_NAME "Cub3d"
 #define FOV 66
+#define BPP 32
 /* Structure */
 
 typedef struct s_texture
@@ -103,6 +104,16 @@ typedef struct s_color {
 	unsigned char b;
 } t_color;
 
+typedef struct s_verl_inf{
+	int	drawstart;
+	int drawend;
+	int texturex;
+	int x;
+	int textwidth;
+	int textheight;
+	// double texturePos;
+	// int textureIndex;
+}	t_verl_inf;
 
 typedef struct s_data{
 	int				screenWidth;
@@ -118,6 +129,7 @@ typedef struct s_data{
 	t_color			*colors_ceiling;
 	int				mouse_x;
 	t_map_data		map_data;
+	t_verl_inf *verl_inf;
 }	t_data;
 
 /* Fonctions */
@@ -194,6 +206,7 @@ int		create_map_for_game(t_map_data  *map_data);
 int		define_player_pos(t_map_data  *map_data);
 int		define_check_pos(t_map_data  *map_data);
 void allocate_colors(t_data *data);
+void allocate_verline_data(t_data *data);
 
 /*src/parsing.c*/
 int	check_extension_file_name(char *name);
@@ -215,9 +228,9 @@ int		routine_parsing(t_map_data *map_data, int ac, char **av);
 int		loop_routine(t_data *data);
 
 /* raycasting */
-void	draw_ceiling(int x, int drawStart, t_data *data);
-void	draw_floor(int x, int drawEnd, t_data *data);
-void verLine(int x, int drawStart, int drawEnd, t_data *data, int textureIndex, int textureX);
+void	draw_ceiling(t_data *data);
+void	draw_floor(t_data *data);
+void verLine(t_data *data, int textureIndex);
 void	cast_rays_and_render(t_data *data);
 void	rotate(t_player *data, double rotSpeed, int direction);
 
@@ -245,11 +258,11 @@ void	calc_sidedist(t_data *data, t_dpos *sidedist, t_coord *map, t_dpos deltadis
 void	init_step(t_data *data,t_coord *step);
 void	init_perp_wall_d(int side, double *perp_wall_d, t_dpos sidedist, t_dpos deltadist);
 void	calc_dist(t_data *data, t_coord *map, int *side, double *perp_wall_d);
-void	draw_define(double perp_wall_d, int *drawstart, int *drawend);
+void	draw_define(double perp_wall_d, t_data *data);
 void	calc_wallx(double *wallx, t_data *data, int side, double perp_wall_d);
 int	get_textureindex(t_data *data, int side);
-int	raycast(t_data *data, int *drawstart, int *drawend, int *texturex);
-void	init_raydir(t_data *data, int x);
+int	raycast(t_data *data);
+void	init_raydir(t_data *data);
 int	get_texturex(t_data *data, double wallx, int side);
 
 #endif

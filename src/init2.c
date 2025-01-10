@@ -17,9 +17,7 @@ int	retreive_infos_textures(t_data *data, t_map_data *map_data, char **av)
 	treated_line = get_next_line(fd);
 	if (!treated_line)
 		return (close(fd), 0);
-	// int i;
-
-	// i = 0;
+	
 	while (treated_line)
 	{
 		retreive_textures(data, treated_line);

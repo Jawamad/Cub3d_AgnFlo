@@ -30,7 +30,7 @@ void	free_map_data(t_map_data *map_data)
 		free(map_data->map_file);
 }
 
-void	free_img(t_data *data)
+void	free_img(t_data *data) // + verline
 {
 	if (data->img != NULL)
 	{
@@ -41,7 +41,12 @@ void	free_img(t_data *data)
 		}
 	}
 	free(data->img);
+	if (data->verl_inf != NULL)
+	{
+		free(data->verl_inf);
+	}
 	data->img = NULL;
+	data->verl_inf = NULL;
 }
 
 void	free_texture(t_texture *texture, void *mlx)
@@ -66,3 +71,4 @@ void	free_wall(unsigned int **wall)
 	}
 	free(wall);
 }
+

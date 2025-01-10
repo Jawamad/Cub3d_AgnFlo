@@ -13,6 +13,7 @@ int	main(int ac, char **av)
 	init_win(&data);
 	init_map(&data);
 	allocate_colors(&data);
+	allocate_verline_data(&data);
 	init_img(&data);
 	printf("je suis la \n");
 	retreive_infos_textures(&data, &data.map_data, av);

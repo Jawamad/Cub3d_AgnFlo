@@ -24,6 +24,11 @@ void allocate_colors(t_data *data)
 	data->colors_ceiling = malloc(sizeof(t_color));
 }
 
+void allocate_verline_data(t_data *data)
+{
+	data->verl_inf = malloc(sizeof(t_verl_inf));
+}
+
 char	**manage_temp(t_map_data *map_data, char *line)
 {
 	char	**temp;
