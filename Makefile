@@ -4,7 +4,7 @@ DIR_OBJ = obj/
 LIBFT = libft/libft.a
 LIBMLX = mlx/libmlx.a
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror -g -ggdb 
+CFLAGS = -Wall -Wextra -Werror -g -ggdb -o3
 LDFLAGS = -lreadline
 RM = rm -f
 

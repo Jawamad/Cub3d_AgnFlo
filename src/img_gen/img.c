@@ -9,6 +9,12 @@ void	init_img(t_data *data)
 			return ;
 	}
 	data->img->img_ptr = mlx_new_image(data->mlx, SC_WIDTH, SC_HEIGHT);
+	if (!data->img->img_ptr)
+	{
+		free(data->img);
+		data->img = NULL;
+		return ;
+	}
 	data->img->addr = mlx_get_data_addr(data->img->img_ptr,
 			&data->img->bpp, &data->img->line_length, &data->img->endian);
 	printf("init image je suis la \n");

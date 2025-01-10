@@ -33,8 +33,7 @@ int	parsing(int ac, char **av, t_data *data)
 		return (0);
 	}
 	ft_printf("parsing succeed... creating map\n");
-	map_data.map_file = av[1];
-	create_map_for_game(&map_data);
+	create_map_for_game(&map_data, av[1]);
 	display_map_data(&map_data);
 	if (!too_many_player(map_data))
 	{

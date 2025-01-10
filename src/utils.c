@@ -10,6 +10,7 @@ void	clean_all(t_data *data)
 	mlx_destroy_display(data->mlx);
 	if (data->mlx)
 		free(data->mlx);
+	free(data);
 }
 
 void	coordswap(t_coord *a, t_coord *b)
@@ -19,4 +20,14 @@ void	coordswap(t_coord *a, t_coord *b)
 	c = *a;
 	*a = *b;
 	*b = c;
+}
+
+int	iswall(t_map_data *map_data, int x, int y)
+{
+	char	c;
+
+	c = map_data->map[y][x];
+	if (c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E')
+		return (1);
+	return (0);
 }

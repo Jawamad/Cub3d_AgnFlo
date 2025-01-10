@@ -83,6 +83,6 @@ void	fill_part(t_coord *start, t_coord *end, t_arrow *player, int y)
 	if (y >= player->left.y)
 		end->x = interpolate_x(player->left, player->right, y);
 	else
-		end->x = interpolate_x(player->head, player->right, y);
+		end->x = interpolate_x(player->head, player->left, y);
 	end->y = y;
 }

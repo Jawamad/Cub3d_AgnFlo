@@ -83,7 +83,7 @@ void	calc_dist(t_data *data, t_coord *map, int *side, double *perp_wall_d)
 			map->y += step.y;
 			*side = 1;
 		}
-		if (!valid_pos(&data->map_data, map->y, map->x))
+		if (!iswall(&data->map_data, map->y, map->x))
 			break ;
 	}
 	init_perp_wall_d(*side, perp_wall_d, sidedist, deltadist);

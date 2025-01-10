@@ -24,10 +24,11 @@
 #define TILE 8
 #define SC_WIDTH 1200
 #define SC_HEIGHT 600
-#define SPEED 0.05
-#define ROT_SPEED 0.02
+#define SPEED 0.1
+#define ROT_SPEED 0.03
 #define GAME_NAME "Cub3d"
 #define FOV 66
+#define BUFFER_DIST 0.08
 #define BPP 32
 /* Structure */
 
@@ -87,7 +88,6 @@ typedef struct s_map_data{
 	char			*so;
 	char			*we;
 	char			*ea;
-	char			*map_file;
 }	t_map_data;
 
 typedef struct s_img{
@@ -137,6 +137,7 @@ typedef struct s_data{
 	t_color			*colors_ceiling;
 	int				mouse_x;
 	t_map_data		map_data;
+	int				line_height;
 	t_verl_inf *verl_inf;
 }	t_data;
 
@@ -145,6 +146,8 @@ int key_release(int keycode, t_data *data);
 int key_press(int keycode, t_data *data);
 int parsing(int ac, char **av, t_data *data);
 int too_many_player(t_map_data map_data);
+int	iswall(t_map_data *map_data, int x, int y);
+void	init_var(t_data *data);
 
 /* input.c */
 void	action_key(t_data *data);
@@ -161,7 +164,8 @@ void	strafe_left(t_map_data *map_data);
 void	strafe_right(t_map_data *map_data);
 void	forward(t_map_data *map_data);
 void	backward(t_map_data *map_data);
-int	valid_pos(t_map_data *map_data, int x, int y);
+int	valid_pos(t_map_data *map_data, float x, float y);
+// int	valid_pos(t_map_data *map_data, float x, float y);
 
 /* minimap/map_pos.c */
 t_pos	create_pos(float x, float y);
@@ -209,9 +213,9 @@ void	init_verline(t_data *data, int textureindex);
 int		if_temp_null(t_map_data  *map_data, char **temp);
 char	**manage_temp(t_map_data  *map_data, char *line);
 int		save_line_in_map(t_map_data  *map_data, char *line);
-int		create_map(t_map_data  *map_data);
+int		create_map(t_map_data  *map_data, char* map_file);
 void	treat_line(char *treated_line, t_map_data *map_data);
-int		create_map_for_game(t_map_data  *map_data);
+int	create_map_for_game(t_map_data *map_data, char* map_file);
 int		define_player_pos(t_map_data  *map_data);
 int		define_check_pos(t_map_data  *map_data);
 void allocate_colors(t_data *data);
@@ -230,7 +234,7 @@ int	check_allowed_caracters(t_map_data  *map_data);
 void	flood_map(t_map_data  *map_data, int x, int y);
 int		check_flood_fill(t_map_data  *map_data);
 int		map_free_after_flood_fill(t_map_data *map_data);
-int		routine_floodfill(t_map_data *map_data);
+int	routine_floodfill(t_map_data *map_data, char * map_file);
 int		routine_parsing(t_map_data *map_data, int ac, char **av);
 
 /* routine.c */
@@ -257,8 +261,9 @@ void print_all_pixels(t_data *data, int i);
 void init_texture(t_data *data);
 
 /* init2.c*/
-int	retreive_infos_textures(t_data *data, t_map_data *map_data, char **av);
-void retreive_textures(t_data *data, char *treated_line);
+int		retreive_infos_textures(t_data *data, char **av);
+int		is_texture_path(char *treated_line);
+void	retreive_textures(t_data *data, char *treated_line);
 
 
 

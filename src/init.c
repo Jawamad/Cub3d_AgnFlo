@@ -53,8 +53,6 @@ char	**manage_temp(t_map_data *map_data, char *line)
 	return (temp);
 }
 
-
-
 int	define_player_pos(t_map_data *map_data)
 {
 	int	x;
@@ -103,4 +101,3 @@ int	define_check_pos(t_map_data *map_data)
 	}
 	return (0);
 }
-

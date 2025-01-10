@@ -38,18 +38,18 @@ int	is_map_line(const char *line)
 	return (1);
 }
 
-int	create_map(t_map_data *map_data)
+int	create_map(t_map_data *map_data, char *map_file)
 {
 	int		fd;
 	char	*treated_line;
 
-	fd = open(map_data->map_file, O_RDONLY);
+	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
 	{
 		printf("error: cannot read file");
 		return (0);
 	}
-	printf("create map MAP FILE %s\n", map_data->map_file);
+	printf("create map MAP FILE %s\n", map_file);
 	ft_memset(map_data, 0, sizeof(t_map_data));
 	treated_line = get_next_line(fd);
 	if (!treated_line)
@@ -87,12 +87,11 @@ void	treat_line(char *treated_line, t_map_data *map_data)
 	}
 }
 
-int	create_map_for_game(t_map_data *map_data)
+int	create_map_for_game(t_map_data *map_data, char *map_file)
 {
-	if (!create_map(map_data))
+	if (!create_map(map_data, map_file))
 	{
 		ft_printf("Error: Failed to create map\n");
-		fflush(stdout);
 		return (0);
 	}
 	else
