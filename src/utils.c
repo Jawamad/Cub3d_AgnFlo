@@ -10,6 +10,7 @@ void	clean_all(t_data *data)
 	mlx_destroy_display(data->mlx);
 	if (data->mlx)
 		free(data->mlx);
+	free(data);
 }
 
 void	coordswap(t_coord *a, t_coord *b)

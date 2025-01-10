@@ -14,8 +14,6 @@ void	init_map(t_data *data)
 	data->screenHeight = SC_HEIGHT;
 	define_player_pos(&data->map_data);
 	data->map_data.player.angle = M_PI;
-	/* data->key_pressed = 0;
-	data->keycode = 0; */
 	data->mouse_x = SC_WIDTH / 2;
 	data->map_data.player.ppos.x = data->map_data.player_pos_y;
 	data->map_data.player.ppos.y = data->map_data.player_pos_x;
@@ -39,4 +37,16 @@ void	calc_plane(t_player *player)
 	planescale = tan((FOV * M_PI / 180) / 2);
 	player->planeX = player->dirY * planescale;
 	player->planeY = -player->dirX * planescale;
+}
+
+void	init_var(t_data *data)
+{
+	data->keys[0] = 0;
+	data->keys[1] = 0;
+	data->keys[2] = 0;
+	data->keys[XK_w] = 0;
+	data->keys[XK_s] = 0;
+	data->keys[XK_a] = 0;
+	data->keys[XK_d] = 0;
+	data->img = 0;
 }

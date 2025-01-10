@@ -1,23 +1,19 @@
 #include "../inc/cub3d.h"
 
-int	retreive_infos_textures(t_data *data, t_map_data *map_data, char **av)
+int	retreive_infos_textures(t_data *data, char **av)
 {
 	int		fd;
 	char	*treated_line;
 
-	fd = open(av[1], O_RDONLY);	
+	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 	{
 		printf("error: cannot read file");
 		return (0);
 	}
-	(void)map_data;
 	treated_line = get_next_line(fd);
 	if (!treated_line)
 		return (close(fd), 0);
-	// int i;
-
-	// i = 0;
 	while (treated_line)
 	{
 		retreive_textures(data, treated_line);
@@ -28,79 +24,43 @@ int	retreive_infos_textures(t_data *data, t_map_data *map_data, char **av)
 	return (1);
 }
 
-void retreive_textures(t_data *data, char *treated_line)
+int	is_texture_path(char *treated_line)
 {
 	if (strncmp(treated_line, "NO ", 3) == 0)
-    {
-        char *path;
-		
-		path = ft_strchr(treated_line, ' ');
-		while (*path == ' ')
-			path++;
-        if (path)
-        {
-			int i = 0;
-			while (path[i] != '\n')
-				i++;
-			path[i] = '\0';
-            printf("TL texture part NO: %s\n", path);
-			data->texture[0].path = ft_strdup(path);
-        }
-    }
+		return (1);
 	if (strncmp(treated_line, "SO ", 3) == 0)
-    {
-        char *path;
-		
-		path = ft_strchr(treated_line, ' ');
-		while (*path == ' ')
-			path++;
-        if (path)
-        {
-			int i = 0;
-			while (path[i] != '\n')
-				i++;
-			path[i] = '\0';
-            printf("TL texture part SO: %s\n", path);
-			data->texture[1].path = ft_strdup(path);
-        }
-    }
+		return (2);
 	if (strncmp(treated_line, "WE ", 3) == 0)
-    {
-        char *path;
-		
-		path = ft_strchr(treated_line, ' ');
-		while (*path == ' ')
-			path++;
-        if (path)
-        {
-			int i = 0;
-			while (path[i] != '\n')
-				i++;
-			path[i] = '\0';
-            printf("TL texture part WE: %s\n", path);
-			data->texture[2].path = ft_strdup(path);
-        }
-    }
+		return (3);
 	if (strncmp(treated_line, "EA ", 3) == 0)
-    {
-        char *path;
-		
-		path = ft_strchr(treated_line, ' ');
-		while (*path == ' ')
-			path++;
-        if (path)
-        {
-			int i = 0;
-			while (path[i] != '\n')
-				i++;
-			path[i] = '\0';
-            printf("TL texture part EA: %s\n", path);
-			data->texture[3].path = ft_strdup(path);
-        }
-    }
+		return (4);
+	return (0);
 }
 
-void retreive_colors(char *treated_line)
+void	retreive_textures(t_data *data, char *treated_line)
+{
+	int		texturepath;
+	char	*path;
+	int		i;
+
+	texturepath = is_texture_path(treated_line);
+	if (texturepath)
+	{
+		path = ft_strchr(treated_line, ' ');
+		while (*path == ' ')
+			path++;
+		if (path)
+		{
+			i = 0;
+			while (path[i] != '\n')
+				i++;
+			path[i] = '\0';
+			data->texture[texturepath - 1].path = ft_strdup(path);
+		}
+	}
+}
+
+void	retreive_colors(char *treated_line)
 {
 	if (strncmp(treated_line, "C ", 2) == 0)
 		printf("%s", treated_line);

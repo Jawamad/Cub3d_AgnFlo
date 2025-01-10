@@ -13,7 +13,7 @@ void	init_img(t_data *data)
 	{
 		free(data->img);
 		data->img = NULL;
-		return;
+		return ;
 	}
 	data->img->addr = mlx_get_data_addr(data->img->img_ptr,
 			&data->img->bpp, &data->img->line_length, &data->img->endian);

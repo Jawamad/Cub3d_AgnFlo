@@ -25,10 +25,10 @@
 #define SC_WIDTH 1200
 #define SC_HEIGHT 600
 #define SPEED 0.1
-#define ROT_SPEED 0.02
+#define ROT_SPEED 0.03
 #define GAME_NAME "Cub3d"
 #define FOV 66
-#define BUFFER_DIST 0.05
+#define BUFFER_DIST 0.08
 /* Structure */
 
 typedef struct s_texture
@@ -127,6 +127,7 @@ int key_press(int keycode, t_data *data);
 int parsing(int ac, char **av, t_data *data);
 int too_many_player(t_map_data map_data);
 int	iswall(t_map_data *map_data, int x, int y);
+void	init_var(t_data *data);
 
 /* input.c */
 void	action_key(t_data *data);
@@ -233,14 +234,10 @@ void init_texture(t_data *data);
 // void init_texture(t_data *data);
 
 /* init2.c*/
-int	retreive_infos_textures(t_data *data, t_map_data *map_data, char **av);
-// int	retreive_infos_textures(t_data *data, char **av);
-
-// int	retreive_infos_textures(t_map_data *map_data, char **av);
-// void retreive_textures(char *treat_line);
-void retreive_colors(char *treated_line);
-
-void retreive_textures(t_data *data, char *treated_line);
+int		retreive_infos_textures(t_data *data, char **av);
+int		is_texture_path(char *treated_line);
+void	retreive_colors(char *treated_line);
+void	retreive_textures(t_data *data, char *treated_line);
 
 
 

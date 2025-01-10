@@ -74,7 +74,7 @@ int	check_flood_fill(t_map_data *map_data)
 	return (1);
 }
 
-int	routine_floodfill(t_map_data *map_data, char * map_file)
+int	routine_floodfill(t_map_data *map_data, char *map_file)
 {
 	if (!create_map_for_game(map_data, map_file))
 	{
@@ -112,13 +112,13 @@ int	routine_parsing(t_map_data *map_data, int ac, char **av)
 		ft_printf("Error: the file does not exist\n");
 		return (0);
 	}
-	printf("routine parsing MAP FILE %s\n",av[1]);
+	printf("routine parsing MAP FILE %s\n", av[1]);
 	if (!routine_floodfill(map_data, av[1]))
 	{
 		free_map_data(map_data);
 		printf("Error: flood fill check failed\n");
 		return (0);
 	}
-	printf("routine parsing MAP FILE %s\n",av[1]);
+	printf("routine parsing MAP FILE %s\n", av[1]);
 	return (1);
 }

@@ -3,19 +3,20 @@
 int	main(int ac, char **av)
 {
 	t_data	*data;
-	
+
 	data = malloc(sizeof(t_data));
 	if (!data)
-		return(0);
+		return (0);
 	if (!parsing(ac, av, data))
 	{
 		ft_printf("Exiting program ...\n");
 		return (1);
 	}
+	init_var(data);
 	init_win(data);
 	init_map(data);
 	init_img(data);
-	retreive_infos_textures(data, &data->map_data, av);
+	retreive_infos_textures(data, av);
 	init_texture(data);
 	mlx_hook(data->mlx_win, KeyPress, KeyPressMask, key_press, data);
 	mlx_hook(data->mlx_win, KeyRelease, KeyReleaseMask, key_release, data);
@@ -26,7 +27,7 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-int key_press(int keycode, t_data *data)
+int	key_press(int keycode, t_data *data)
 {
 	if (keycode < 256 && keycode > 2)
 		data->keys[keycode] = 1;
@@ -42,7 +43,7 @@ int key_press(int keycode, t_data *data)
 	return (0);
 }
 
-int key_release(int keycode, t_data *data)
+int	key_release(int keycode, t_data *data)
 {
 	if (keycode < 256 && keycode > 2)
 		data->keys[keycode] = 0;
@@ -54,6 +55,6 @@ int key_release(int keycode, t_data *data)
 			data->keys[1] = 0;
 		if (keycode == XK_Escape)
 			data->keys[2] = 0;
-	} 
+	}
 	return (0);
 }
