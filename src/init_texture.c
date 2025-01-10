@@ -55,9 +55,7 @@ void	init_texture(t_data *data)
 	i = 0;
 	while (i < 4)
 	{
-		printf("je suis la \n");
 		init_walls(data, i);
-		printf("je suis dans init walls\n");
 		allocate_wall(data, i);
 		print_all_pixels(data, i);
 		mlx_destroy_image(data->mlx, data->texture[i].img);

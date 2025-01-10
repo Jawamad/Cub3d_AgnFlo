@@ -3,7 +3,7 @@
 void	init_verline(t_data *data, int textureindex)
 {
 	data->verl_inf->step = (double)data->texture[textureindex].height
-		/ (data->verl_inf->drawend - data->verl_inf->drawstart);
+		/ data->line_height;
 	data->verl_inf->texturePos = 0.0;
 	data->verl_inf->textureY = 0;
 	data->verl_inf->pixel = 0;

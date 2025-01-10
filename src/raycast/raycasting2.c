@@ -17,6 +17,7 @@ void	draw_define(double perp_wall_d, t_data *data)
 	int	lineheight;
 
 	lineheight = (int)(SC_HEIGHT / perp_wall_d);
+	data->line_height = lineheight;
 	data->verl_inf->drawstart = -lineheight / 2 + SC_HEIGHT / 2;
 	if (data->verl_inf->drawstart < 0)
 		data->verl_inf->drawstart = 0;

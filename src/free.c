@@ -69,4 +69,3 @@ void	free_wall(unsigned int **wall)
 	}
 	free(wall);
 }
-

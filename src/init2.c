@@ -21,8 +21,6 @@ int	retreive_infos_textures(t_data *data, char **av)
 		free(treated_line);
 		treated_line = get_next_line(fd);
 	}
-	printf(" data floor r g b %d %d %d \n", data->colors_floor->r,  data->colors_floor->g,  data->colors_floor->b);	
-	printf(" data ceiling r g b %d %d %d \n", data->colors_ceiling->r,  data->colors_ceiling->g,  data->colors_ceiling->b);	
 	close(fd);
 	return (1);
 }
@@ -62,4 +60,3 @@ void	retreive_textures(t_data *data, char *treated_line)
 		}
 	}
 }
-
