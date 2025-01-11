@@ -7,15 +7,14 @@ int	main(int ac, char **av)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (0);
+	allocate_colors(data);
 	if (!parsing(ac, av, data))
-		return (ft_printf("Exiting program ...\n"), free(data), 1);
+		return (ft_printf("Exiting program ...\n"), free_color(data), free(data), 1);
 	init_var(data);
 	init_win(data);
 	init_map(data);
-	allocate_colors(data);
 	allocate_verline_data(data);
 	init_img(data);
-	retreive_infos_textures(data, av);
 	init_texture(data);
 	mlx_hook(data->mlx_win, KeyPress, KeyPressMask, key_press, data);
 	mlx_hook(data->mlx_win, KeyRelease, KeyReleaseMask, key_release, data);

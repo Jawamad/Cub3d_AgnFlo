@@ -38,8 +38,6 @@ void	free_img(t_data *data)
 			data->img->img_ptr = NULL;
 		}
 	}
-	free(data->colors_floor);
-	free(data->colors_ceiling);
 	free(data->img);
 	if (data->verl_inf != NULL)
 	{

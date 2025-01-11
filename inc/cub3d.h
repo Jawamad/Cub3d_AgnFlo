@@ -183,6 +183,7 @@ void	clean_all(t_data *data);
 void	free_wall(unsigned int **wall);
 void	free_texture(t_texture *texture);
 void	free_img(t_data *data);
+void	free_color(t_data *data);
 
 /* minimap/create_mmap.c */
 int		loop_routine(t_data *data);
@@ -215,26 +216,26 @@ char	**manage_temp(t_map_data  *map_data, char *line);
 int		save_line_in_map(t_map_data  *map_data, char *line);
 int		create_map(t_map_data  *map_data, char* map_file);
 void	treat_line(char *treated_line, t_map_data *map_data);
-int	create_map_for_game(t_map_data *map_data, char* map_file);
+int		create_map_for_game(t_map_data *map_data, char* map_file);
 int		define_player_pos(t_map_data  *map_data);
 int		define_check_pos(t_map_data  *map_data);
-void allocate_colors(t_data *data);
-void allocate_verline_data(t_data *data);
+void	allocate_colors(t_data *data);
+void	allocate_verline_data(t_data *data);
 
 /*src/parsing.c*/
-int	check_extension_file_name(char *name);
-int	does_file_exist(char *name);
-void display_map_data(t_map_data  *map_data);
-int	check_walls_horizontal(t_map_data  *map_data);
-int	check_walls_vertical(t_map_data  *map_data);
-int	check_allowed_caracters(t_map_data  *map_data);
+int		check_extension_file_name(char *name);
+int		does_file_exist(char *name);
+void	display_map_data(t_map_data  *map_data);
+int		check_walls_horizontal(t_map_data  *map_data);
+int		check_walls_vertical(t_map_data  *map_data);
+int		check_allowed_caracters(t_map_data  *map_data);
 
 
 /*src/floodfill.c*/
 void	flood_map(t_map_data  *map_data, int x, int y);
 int		check_flood_fill(t_map_data  *map_data);
 int		map_free_after_flood_fill(t_map_data *map_data);
-int	routine_floodfill(t_map_data *map_data, char * map_file);
+int		routine_floodfill(t_map_data *map_data, char * map_file);
 int		routine_parsing(t_map_data *map_data, int ac, char **av);
 
 /* routine.c */
@@ -248,17 +249,17 @@ void	cast_rays_and_render(t_data *data);
 void	rotate(t_player *data, double rotSpeed, int direction);
 
 /* retreive_colors.c*/
-void retreive_colors(char *treated_line, t_data *data);
-void retrieve_colors_floor(char *treated_line, t_data *data);
-void assign_r_g_b_floor(t_data *data, int z, int color_value);
-void retrieve_colors_ceiling(char *treated_line, t_data *data);
-void assign_r_g_b_ceiling(t_data *data, int z, int color_value);
+void	retreive_colors(char *treated_line, t_data *data);
+void	retrieve_colors_floor(char *treated_line, t_data *data);
+void	assign_r_g_b_floor(t_data *data, int z, int color_value);
+void	retrieve_colors_ceiling(char *treated_line, t_data *data);
+void	assign_r_g_b_ceiling(t_data *data, int z, int color_value);
 
 /* init texture */
-void init_images_walls(t_data *data);
-void allocate_wall(t_data *data, int i);
-void print_all_pixels(t_data *data, int i);
-void init_texture(t_data *data);
+void	init_images_walls(t_data *data);
+void	allocate_wall(t_data *data, int i);
+void	print_all_pixels(t_data *data, int i);
+void	init_texture(t_data *data);
 
 /* init2.c*/
 int		retreive_infos_textures(t_data *data, char **av);
@@ -274,9 +275,9 @@ void	init_perp_wall_d(int side, double *perp_wall_d, t_dpos sidedist, t_dpos del
 void	calc_dist(t_data *data, t_coord *map, int *side, double *perp_wall_d);
 void	draw_define(double perp_wall_d, t_data *data);
 void	calc_wallx(double *wallx, t_data *data, int side, double perp_wall_d);
-int	get_textureindex(t_data *data, int side);
-int	raycast(t_data *data);
+int		get_textureindex(t_data *data, int side);
+int		raycast(t_data *data);
 void	init_raydir(t_data *data);
-int	get_texturex(t_data *data, double wallx, int side);
+int		get_texturex(t_data *data, double wallx, int side);
 
 #endif

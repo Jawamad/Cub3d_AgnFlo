@@ -28,9 +28,11 @@ int	parsing(int ac, char **av, t_data *data)
 	t_map_data	map_data;
 
 	if (!routine_parsing(&map_data, ac, av))
+		return (ft_printf("Error: parsing failed\n"), 0);
+	if (!retreive_infos_textures(data, av))
 	{
-		ft_printf("Error: parsing failed\n");
-		return (0);
+		free_map_data(&map_data);
+		return (ft_printf("Error: unreachable texture or color\n"), 0);
 	}
 	ft_printf("parsing succeed... creating map\n");
 	create_map_for_game(&map_data, av[1]);
