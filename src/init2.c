@@ -1,5 +1,11 @@
 #include "../inc/cub3d.h"
 
+void	allocate_colors(t_data *data)
+{
+	data->colors_floor = malloc(sizeof(t_color));
+	data->colors_ceiling = malloc(sizeof(t_color));
+}
+
 int	retreive_infos_textures(t_data *data, char **av)
 {
 	int		fd;
