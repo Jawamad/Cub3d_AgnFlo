@@ -45,3 +45,9 @@ void	free_color(t_data *data)
 	free(data->colors_floor);
 	free(data->colors_ceiling);
 }
+
+void	free_color_and_data(t_data *data)
+{
+	free_color(data);
+	free(data);
+}

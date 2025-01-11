@@ -6,19 +6,19 @@
 /*   By: agtshiba <agtshiba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:03:28 by agtshiba          #+#    #+#             */
-/*   Updated: 2025/01/11 15:53:36 by agtshiba         ###   ########.fr       */
+/*   Updated: 2025/01/11 17:00:36 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	retrieve_colors_floor(char *treated_line, t_data *data)
+int	retrieve_colors_floor(char *treated_line, t_data *data)
 {
 	char	alpha_num[4];
 	int		i;
 	int		y;
 	int		z;
-	int		color_value;
+	unsigned int	color_value;
 
 	i = 0;
 	y = 0;
@@ -33,21 +33,34 @@ void	retrieve_colors_floor(char *treated_line, t_data *data)
 			manage_single_color(treated_line, &i, &y, alpha_num);
 			alpha_num[y] = '\0';
 			color_value = atoi(alpha_num);
+			if (color_value > 255)
+			{
+				free_color_and_data(data);
+				printf("error: invalid color value \n");
+				exit(1);
+			}
 			assign_r_g_b_floor(data, z, color_value);
 			if (treated_line[i] == ',')
 				i++;
+			else if (z != 2)
+			{
+				free_color_and_data(data);
+				printf("error: invalid color value \n");
+				exit (1);
+			}
 			z++;
 		}
 	}
+	return (1);
 }
 
-void	retrieve_colors_ceiling(char *treated_line, t_data *data)
+int	retrieve_colors_ceiling(char *treated_line, t_data *data)
 {
 	int		i;
 	int		y;
 	int		z;
-	int		color_value;
-	char	alpha_num[4];
+	unsigned int	color_value;
+	char			alpha_num[4];
 
 	i = 0;
 	y = 0;
@@ -62,17 +75,30 @@ void	retrieve_colors_ceiling(char *treated_line, t_data *data)
 			manage_single_color(treated_line, &i, &y, alpha_num);
 			alpha_num[y] = '\0';
 			color_value = atoi(alpha_num);
+			if (color_value > 255)
+			{
+				free_color_and_data(data);
+				printf("error: invalid color value \n");
+				exit(1);
+			}
 			assign_r_g_b_ceiling(data, z, color_value);
 			if (treated_line[i] == ',')
 				i++;
+			else if (z != 2)
+			{
+				free_color_and_data(data);
+				printf("error: invalid color value \n");
+				exit (1);
+			}
 			z++;
 		}
 	}
+	return (1);
 }
 
 void	manage_single_color(char *treated_line, int *i, int *y, char *alpha_num)
 {
-	while (treated_line[*i] != ',' && treated_line[*i] != '\n')
+	while (treated_line[*i] != ',' && treated_line[*i] != '\n' && *y < 3)
 	{
 		alpha_num[*y] = treated_line[*i];
 		(*y)++;

@@ -184,6 +184,7 @@ void	free_wall(unsigned int **wall);
 void	free_texture(t_texture *texture);
 void	free_img(t_data *data);
 void	free_color(t_data *data);
+void	free_color_and_data(t_data *data);
 
 /* minimap/create_mmap.c */
 int		loop_routine(t_data *data);
@@ -249,12 +250,14 @@ void	cast_rays_and_render(t_data *data);
 void	rotate(t_player *data, double rotSpeed, int direction);
 
 /* retreive_colors.c*/
+
 void retreive_colors(char *treated_line, t_data *data);
-void retrieve_colors_floor(char *treated_line, t_data *data);
+int	retrieve_colors_floor(char *treated_line, t_data *data);
+int retrieve_colors_ceiling(char *treated_line, t_data *data);
+// void retrieve_colors_floor(char *treated_line, t_data *data);
 void	manage_single_color(char *treated_line, int *i, int *y, char *alpha_num);
 // void	manage_single_color(char *treated_line, int i, int y, char *alpha_num);
 void assign_r_g_b_floor(t_data *data, int z, int color_value);
-void retrieve_colors_ceiling(char *treated_line, t_data *data);
 void assign_r_g_b_ceiling(t_data *data, int z, int color_value);
 
 /* init texture */
