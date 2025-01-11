@@ -6,39 +6,31 @@
 /*   By: agtshiba <agtshiba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:03:28 by agtshiba          #+#    #+#             */
-/*   Updated: 2025/01/09 16:03:40 by agtshiba         ###   ########.fr       */
+/*   Updated: 2025/01/11 15:53:36 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	retreive_colors(char *treated_line, t_data *data)
-{
-	retrieve_colors_floor(treated_line, data);
-	retrieve_colors_ceiling(treated_line, data);
-}
-
 void	retrieve_colors_floor(char *treated_line, t_data *data)
 {
-	int i = 0;
-	int y = 0;
-	int z;
-	char alpha_num[4];
-	int color_value;
+	char	alpha_num[4];
+	int		i;
+	int		y;
+	int		z;
+	int		color_value;
 
+	i = 0;
+	y = 0;
 	if (strncmp(treated_line, "F ", 2) == 0)
 	{
 		i += 2;
-		z = 0; 
+		z = 0;
 		while (z < 3)
 		{
 			y = 0;
-			while (treated_line[i] != ',' && treated_line[i] != '\n')
-			{
-				alpha_num[y] = treated_line[i];
-				y++;
-				i++;
-			}
+			memset(alpha_num, 0, sizeof(alpha_num));
+			manage_single_color(treated_line, &i, &y, alpha_num);
 			alpha_num[y] = '\0';
 			color_value = atoi(alpha_num);
 			assign_r_g_b_floor(data, z, color_value);
@@ -51,25 +43,23 @@ void	retrieve_colors_floor(char *treated_line, t_data *data)
 
 void	retrieve_colors_ceiling(char *treated_line, t_data *data)
 {
-	int i = 0;
-	int y = 0;
-	int z;
-	char alpha_num[4];
-	int color_value;
+	int		i;
+	int		y;
+	int		z;
+	int		color_value;
+	char	alpha_num[4];
 
+	i = 0;
+	y = 0;
 	if (strncmp(treated_line, "C ", 2) == 0)
 	{
 		i += 2;
-		z = 0; 
+		z = 0;
 		while (z < 3)
 		{
 			y = 0;
-			while (treated_line[i] != ',' && treated_line[i] != '\n')
-			{
-				alpha_num[y] = treated_line[i];
-				y++;
-				i++;
-			}
+			memset(alpha_num, 0, sizeof(alpha_num));
+			manage_single_color(treated_line, &i, &y, alpha_num);
 			alpha_num[y] = '\0';
 			color_value = atoi(alpha_num);
 			assign_r_g_b_ceiling(data, z, color_value);
@@ -77,6 +67,16 @@ void	retrieve_colors_ceiling(char *treated_line, t_data *data)
 				i++;
 			z++;
 		}
+	}
+}
+
+void	manage_single_color(char *treated_line, int *i, int *y, char *alpha_num)
+{
+	while (treated_line[*i] != ',' && treated_line[*i] != '\n')
+	{
+		alpha_num[*y] = treated_line[*i];
+		(*y)++;
+		(*i)++;
 	}
 }
 

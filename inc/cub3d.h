@@ -250,6 +250,8 @@ void	rotate(t_player *data, double rotSpeed, int direction);
 /* retreive_colors.c*/
 void retreive_colors(char *treated_line, t_data *data);
 void retrieve_colors_floor(char *treated_line, t_data *data);
+void	manage_single_color(char *treated_line, int *i, int *y, char *alpha_num);
+// void	manage_single_color(char *treated_line, int i, int y, char *alpha_num);
 void assign_r_g_b_floor(t_data *data, int z, int color_value);
 void retrieve_colors_ceiling(char *treated_line, t_data *data);
 void assign_r_g_b_ceiling(t_data *data, int z, int color_value);
