@@ -181,7 +181,7 @@ void	free_array(char **array);
 void	coordswap(t_coord *a, t_coord *b);
 void	clean_all(t_data *data);
 void	free_wall(unsigned int **wall);
-void	free_texture(t_texture *texture, void *mlx);
+void	free_texture(t_texture *texture);
 void	free_img(t_data *data);
 
 /* minimap/create_mmap.c */

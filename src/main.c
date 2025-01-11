@@ -8,10 +8,7 @@ int	main(int ac, char **av)
 	if (!data)
 		return (0);
 	if (!parsing(ac, av, data))
-	{
-		ft_printf("Exiting program ...\n");
-		return (1);
-	}
+		return (ft_printf("Exiting program ...\n"), free(data), 1);
 	init_var(data);
 	init_win(data);
 	init_map(data);

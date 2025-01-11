@@ -2,7 +2,15 @@
 
 void	clean_all(t_data *data)
 {
+	int	i;
+
 	free_img(data);
+	i = 0;
+	while (i < 4)
+	{
+		free_texture(&data->texture[i]);
+		i++;
+	}
 	free_map_data(&data->map_data);
 	free_wall(data->wall);
 	if (data->mlx_win)

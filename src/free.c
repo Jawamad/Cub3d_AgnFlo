@@ -28,7 +28,7 @@ void	free_map_data(t_map_data *map_data)
 		free(map_data->ea);
 }
 
-void	free_img(t_data *data) // + verline
+void	free_img(t_data *data)
 {
 	if (data->img != NULL)
 	{
@@ -38,21 +38,19 @@ void	free_img(t_data *data) // + verline
 			data->img->img_ptr = NULL;
 		}
 	}
+	free(data->colors_floor);
+	free(data->colors_ceiling);
 	free(data->img);
 	if (data->verl_inf != NULL)
 	{
 		free(data->verl_inf);
+		data->verl_inf = NULL;
 	}
 	data->img = NULL;
-	data->verl_inf = NULL;
 }
 
-void	free_texture(t_texture *texture, void *mlx)
+void	free_texture(t_texture *texture)
 {
-	if (texture->img)
-		mlx_destroy_image(mlx, texture->img);
-	if (texture->addr)
-		free(texture->addr);
 	if (texture->path)
 		free(texture->path);
 }
