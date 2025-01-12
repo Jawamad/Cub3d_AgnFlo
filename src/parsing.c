@@ -1,6 +1,6 @@
 #include "../inc/cub3d.h"
 
-int	check_extension_file_name(char *name)
+int	check_extension_file_name(char *name, int case_num)
 {
 	int			i;
 	int			y;
@@ -8,7 +8,10 @@ int	check_extension_file_name(char *name)
 
 	i = 0;
 	y = 0;
-	needle = ".cub";
+	if (case_num == 1)
+		needle = ".cub";
+	if (case_num == 2)
+		needle = ".xpm";
 	while (name[i])
 	{
 		if (name[i] == needle[y])

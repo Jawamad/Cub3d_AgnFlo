@@ -10,7 +10,8 @@ int	main(int ac, char **av)
 	allocate_colors(data);
 	if (!parsing(ac, av, data))
 		return (ft_printf("Exiting program ...\n"), free_color(data), free(data), 1);
-	retreive_infos_textures(data, av);
+	if (!retreive_infos_textures(data, av))
+		return (ft_printf("Exiting program ...\n"), free_color(data), free_all_textures(data), free(data), 1);
 	init_var(data);
 	init_win(data);
 	init_map(data);

@@ -6,7 +6,7 @@
 /*   By: agtshiba <agtshiba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:03:28 by agtshiba          #+#    #+#             */
-/*   Updated: 2025/01/11 17:00:36 by agtshiba         ###   ########.fr       */
+/*   Updated: 2025/01/12 19:40:05 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	retrieve_colors_floor(char *treated_line, t_data *data)
 	if (strncmp(treated_line, "F ", 2) == 0)
 	{
 		i += 2;
+		while (treated_line[i] == ' ')
+			i++;
 		z = 0;
 		while (z < 3)
 		{
@@ -67,6 +69,8 @@ int	retrieve_colors_ceiling(char *treated_line, t_data *data)
 	if (strncmp(treated_line, "C ", 2) == 0)
 	{
 		i += 2;
+		while (treated_line[i] == ' ')
+			i++;
 		z = 0;
 		while (z < 3)
 		{

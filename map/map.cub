@@ -3,7 +3,7 @@ SO ./assets/img2.xpm
 WE ./assets/img3.xpm
 EA ./assets/img4.xpm
 
-F 256,255,255
+F 255,255,255
 C 120,120,10
 
          1111111111111111111111111

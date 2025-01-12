@@ -102,7 +102,7 @@ int	routine_parsing(t_map_data *map_data, int ac, char **av)
 		ft_printf("Error: wrong number of arguments\n");
 		return (0);
 	}
-	if (!check_extension_file_name(av[1]))
+	if (!check_extension_file_name(av[1], 1))
 	{
 		ft_printf("Error: invalid file extension\n");
 		return (0);

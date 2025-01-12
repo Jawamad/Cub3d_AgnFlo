@@ -181,7 +181,10 @@ void	free_array(char **array);
 void	coordswap(t_coord *a, t_coord *b);
 void	clean_all(t_data *data);
 void	free_wall(unsigned int **wall);
-void	free_texture(t_texture *texture);
+//void	free_texture(t_texture *texture);
+void	free_all_textures(t_data *data);
+void	free_single_texture(t_texture *texture, t_data *data);
+//void	free_single_texture(t_texture *texture);
 void	free_img(t_data *data);
 void	free_color(t_data *data);
 void	free_color_and_data(t_data *data);
@@ -224,7 +227,8 @@ void	allocate_colors(t_data *data);
 void	allocate_verline_data(t_data *data);
 
 /*src/parsing.c*/
-int		check_extension_file_name(char *name);
+// int		check_extension_file_name(char *name);
+int	check_extension_file_name(char *name, int case_num);
 int		does_file_exist(char *name);
 void	display_map_data(t_map_data  *map_data);
 int		check_walls_horizontal(t_map_data  *map_data);
@@ -269,7 +273,9 @@ void	init_texture(t_data *data);
 /* init2.c*/
 int		retreive_infos_textures(t_data *data, char **av);
 int		is_texture_path(char *treated_line);
-void	retreive_textures(t_data *data, char *treated_line);
+int	retreive_textures(t_data *data, char *treated_line);
+int check_texture_file_exists(t_data *data);
+//void	retreive_textures(t_data *data, char *treated_line);
 
 
 

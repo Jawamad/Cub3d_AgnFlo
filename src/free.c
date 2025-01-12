@@ -47,10 +47,40 @@ void	free_img(t_data *data)
 	data->img = NULL;
 }
 
-void	free_texture(t_texture *texture)
+// OLD VERSION OF FREE TEXTURE
+// void	free_texture(t_texture *texture)
+// {
+// 	if (texture->path)
+// 		free(texture->path);
+// }
+
+void free_all_textures(t_data *data)
 {
-	if (texture->path)
-		free(texture->path);
+	int i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (&data->texture[i])
+		{
+			if (data->texture[i].img)
+			{
+				mlx_destroy_image(data->mlx, data->texture[i].img);
+				data->texture[i].img = NULL;
+			}
+			if (data->texture[i].addr)
+			{
+				free(data->texture[i].addr);
+				data->texture[i].addr = NULL;
+			}
+			if (data->texture[i].path)
+			{
+				free(data->texture[i].path);
+				data->texture[i].path = NULL;
+			}
+		}
+		i++;
+	}
 }
 
 void	free_wall(unsigned int **wall)
