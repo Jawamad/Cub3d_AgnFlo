@@ -124,6 +124,8 @@ typedef struct s_verl_inf{
 }	t_verl_inf;
 
 typedef struct s_data{
+	int				flag_color_C;
+	int				flag_color_F;
 	int				screenWidth;
 	int				screenHeight;
 	void			*mlx;
@@ -258,6 +260,8 @@ void	rotate(t_player *data, double rotSpeed, int direction);
 void retreive_colors(char *treated_line, t_data *data);
 int	retrieve_colors_floor(char *treated_line, t_data *data);
 int retrieve_colors_ceiling(char *treated_line, t_data *data);
+int	iterate_color_value(char *treated_line, t_data *data, unsigned int	color_value, int z, int *i);
+void check_F_C_exist(char *treated_line, t_data *data);
 // void retrieve_colors_floor(char *treated_line, t_data *data);
 void	manage_single_color(char *treated_line, int *i, int *y, char *alpha_num);
 // void	manage_single_color(char *treated_line, int i, int y, char *alpha_num);
