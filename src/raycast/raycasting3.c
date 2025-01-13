@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agtshiba <agtshiba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: flmuller <flmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:39:48 by agtshiba          #+#    #+#             */
-/*   Updated: 2025/01/10 15:41:02 by agtshiba         ###   ########.fr       */
+/*   Updated: 2025/01/13 13:14:18 by flmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	init_raydir(t_data *data)
 	double	camera_x;
 
 	camera_x = 2 * data->verl_inf->x / (double)SC_WIDTH - 1;
-	data->raydir.x = data->map_data.player.dirX + data->map_data.player.planeX
+	data->raydir.x = data->map_data.player.dir_x + data->map_data.player.plane_x
 		* camera_x;
-	data->raydir.y = data->map_data.player.dirY + data->map_data.player.planeY
+	data->raydir.y = data->map_data.player.dir_y + data->map_data.player.plane_y
 		* camera_x;
 }
 

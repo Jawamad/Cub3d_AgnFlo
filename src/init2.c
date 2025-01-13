@@ -28,7 +28,7 @@ int	retreive_infos_textures(t_data *data, char **av)
 	}
 	if (!check_texture_file_exists(data))
 		return (0);
-	if (data->flag_color_C != 1 || data->flag_color_F != 1)
+	if (data->flag_color_c != 1 || data->flag_color_f != 1)
 		return (printf("error: F or C values not found or too many\n"), 0);
 	close(fd);
 	return (1);
