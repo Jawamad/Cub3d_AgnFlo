@@ -13,10 +13,7 @@ int	retreive_infos_textures(t_data *data, char **av)
 
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-	{
-		printf("error: cannot read file");
-		return (0);
-	}
+		return (printf("error: cannot read file"), 0);
 	treated_line = get_next_line(fd);
 	if (!treated_line)
 		return (close(fd), 0);
@@ -25,11 +22,14 @@ int	retreive_infos_textures(t_data *data, char **av)
 		if (!retreive_textures(data, treated_line))
 			return (0);
 		retreive_colors(treated_line, data);
+		check_F_C_exist(treated_line, data);
 		free(treated_line);
 		treated_line = get_next_line(fd);
 	}
 	if (!check_texture_file_exists(data))
 		return (0);
+	if (data->flag_color_C != 1 || data->flag_color_F != 1)
+		return (printf("error: F or C values not found or too many\n"), 0);
 	close(fd);
 	return (1);
 }
