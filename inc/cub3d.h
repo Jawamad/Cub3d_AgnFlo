@@ -265,7 +265,7 @@ void	treat_col_val_ceiling(t_data *data, int *i, char *treated_line, int z);
 void	manage_single_color(char *treated_line, int *i, int *y, char *alpha_num);
 void assign_r_g_b_floor(t_data *data, int z, int color_value);
 void assign_r_g_b_ceiling(t_data *data, int z, int color_value);
-void check_F_C_exist(char *treated_line, t_data *data);
+void check_f_c_exist(char *treated_line, t_data *data);
 
 /* init texture */
 void	init_images_walls(t_data *data);

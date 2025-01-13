@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   routine.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agtshiba <agtshiba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/13 13:13:29 by agtshiba          #+#    #+#             */
+/*   Updated: 2025/01/13 13:16:17 by agtshiba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
 int	loop_routine(t_data *data)
@@ -26,6 +38,7 @@ int	loop_routine(t_data *data)
 int	parsing(int ac, char **av, t_data *data)
 {
 	t_map_data	map_data;
+
 	if (!routine_parsing(&map_data, ac, av))
 		return (ft_printf("Error: parsing failed\n"), 0);
 	ft_printf("parsing succeed... creating map\n");

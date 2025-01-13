@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init2.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agtshiba <agtshiba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/13 13:12:51 by agtshiba          #+#    #+#             */
+/*   Updated: 2025/01/13 13:17:48 by agtshiba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
 void	allocate_colors(t_data *data)
@@ -22,7 +34,7 @@ int	retreive_infos_textures(t_data *data, char **av)
 		if (!retreive_textures(data, treated_line))
 			return (0);
 		retreive_colors(treated_line, data);
-		check_F_C_exist(treated_line, data);
+		check_f_c_exist(treated_line, data);
 		free(treated_line);
 		treated_line = get_next_line(fd);
 	}
@@ -76,16 +88,19 @@ int	retreive_textures(t_data *data, char *treated_line)
 	return (1);
 }
 
-int check_texture_file_exists(t_data *data)
+int	check_texture_file_exists(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)
 	{
-		if (access(data->texture[i].path, F_OK) == 0) {
+		if (access(data->texture[i].path, F_OK) == 0)
+		{
 			i++;
-		} else {
+		}
+		else
+		{
 			printf("Error : the texture path does not exist\n");
 			return (free_map_data(&data->map_data), 0);
 		}

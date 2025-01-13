@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agtshiba <agtshiba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/13 13:12:11 by agtshiba          #+#    #+#             */
+/*   Updated: 2025/01/13 13:14:29 by agtshiba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
 void	free_array(char **array)
@@ -47,16 +59,9 @@ void	free_img(t_data *data)
 	data->img = NULL;
 }
 
-// OLD VERSION OF FREE TEXTURE
-// void	free_texture(t_texture *texture)
-// {
-// 	if (texture->path)
-// 		free(texture->path);
-// }
-
-void free_all_textures(t_data *data)
+void	free_all_textures(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)
