@@ -6,7 +6,7 @@
 /*   By: agtshiba <agtshiba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:03:28 by agtshiba          #+#    #+#             */
-/*   Updated: 2025/01/13 12:50:58 by agtshiba         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:59:00 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	retrieve_colors_ceiling(char *treated_line, t_data *data)
 	}
 	return (1);
 }
+
+
 void	treat_col_val_floor(t_data *data, int *i, char *treated_line, int z)
 {
 	char			alpha_num[4];
@@ -66,7 +68,7 @@ void	treat_col_val_floor(t_data *data, int *i, char *treated_line, int z)
 	color_value = atoi(alpha_num);
 	if (color_value > 255)
 	{
-		free_color_and_data(data);
+		free_color_and_data(data, treated_line);
 		printf("error: invalid color value \n");
 		exit(1);
 	}
@@ -75,7 +77,7 @@ void	treat_col_val_floor(t_data *data, int *i, char *treated_line, int z)
 		(*i)++;
 	else if (z != 2)
 	{
-		free_color_and_data(data);
+		free_color_and_data(data, treated_line);
 		printf("error: invalid color value \n");
 		exit (1);
 	}
@@ -94,7 +96,7 @@ void	treat_col_val_ceiling(t_data *data, int *i, char *treated_line, int z)
 	color_value = atoi(alpha_num);
 	if (color_value > 255)
 	{
-		free_color_and_data(data);
+		free_color_and_data(data, treated_line);
 		printf("error: invalid color value \n");
 		exit(1);
 	}
@@ -103,7 +105,7 @@ void	treat_col_val_ceiling(t_data *data, int *i, char *treated_line, int z)
 		(*i)++;
 	else if (z != 2)
 	{
-		free_color_and_data(data);
+		free_color_and_data(data, treated_line);
 		printf("error: invalid color value \n");
 		exit (1);
 	}
