@@ -37,7 +37,7 @@ int	retrieve_colors_floor(char *treated_line, t_data *data)
 			color_value = atoi(alpha_num);
 			if (color_value > 255)
 			{
-				free_color_and_data(data);
+				free_color_and_data(data, treated_line);
 				printf("error: invalid color value \n");
 				exit(1);
 			}
@@ -46,7 +46,7 @@ int	retrieve_colors_floor(char *treated_line, t_data *data)
 				i++;
 			else if (z != 2)
 			{
-				free_color_and_data(data);
+				free_color_and_data(data, treated_line);
 				printf("error: invalid color value \n");
 				exit (1);
 			}
@@ -81,7 +81,7 @@ int	retrieve_colors_ceiling(char *treated_line, t_data *data)
 			color_value = atoi(alpha_num);
 			if (color_value > 255)
 			{
-				free_color_and_data(data);
+				free_color_and_data(data, treated_line);
 				printf("error: invalid color value \n");
 				exit(1);
 			}
@@ -90,7 +90,7 @@ int	retrieve_colors_ceiling(char *treated_line, t_data *data)
 				i++;
 			else if (z != 2)
 			{
-				free_color_and_data(data);
+				free_color_and_data(data, treated_line);
 				printf("error: invalid color value \n");
 				exit (1);
 			}

@@ -31,7 +31,7 @@ int	is_map_line(const char *line)
 			&& line[i] != ' ' && line[i] != '\n' && line[i] != 'N'
 			&& line[i] != 'S' && line[i] != 'E' && line[i] != 'W')
 		{
-			return (0);
+			return (2);
 		}
 		i++;
 	}
@@ -56,7 +56,8 @@ int	create_map(t_map_data *map_data, char *map_file)
 		return (close(fd), 0);
 	while (treated_line)
 	{
-		treat_line(treated_line, map_data);
+		if (!treat_line(treated_line, map_data))
+			return (free(treated_line), 0);
 		free(treated_line);
 		treated_line = get_next_line(fd);
 	}
@@ -64,7 +65,7 @@ int	create_map(t_map_data *map_data, char *map_file)
 	return (1);
 }
 
-void	treat_line(char *treated_line, t_map_data *map_data)
+int	treat_line(char *treated_line, t_map_data *map_data)
 {
 	int		width;
 	int		i;
@@ -73,6 +74,8 @@ void	treat_line(char *treated_line, t_map_data *map_data)
 	i = 0;
 	if (is_map_line(treated_line) && *treated_line != '\n')
 	{
+		if (is_map_line(treated_line) == 2)
+			return (0);
 		while (treated_line[i] != '\n' && treated_line[i] != '\0')
 		{
 			if (treated_line[i++] == '\t')
@@ -85,6 +88,7 @@ void	treat_line(char *treated_line, t_map_data *map_data)
 			map_data->width = width;
 		save_line_in_map(map_data, treated_line);
 	}
+	return(1);
 }
 
 int	create_map_for_game(t_map_data *map_data, char *map_file)

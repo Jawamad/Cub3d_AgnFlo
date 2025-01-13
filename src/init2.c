@@ -59,7 +59,7 @@ int	retreive_textures(t_data *data, char *treated_line)
 		if (!check_extension_file_name(treated_line, 2))
 		{
 			ft_printf("Error: invalid texture extension\n");
-			return (0);
+			return (free(treated_line), free_map_data(&data->map_data), 0);
 		}
 		path = ft_strchr(treated_line, ' ');
 		while (*path == ' ')
@@ -87,7 +87,7 @@ int check_texture_file_exists(t_data *data)
 			i++;
 		} else {
 			printf("Error : the texture path does not exist\n");
-			return (0);
+			return (free_map_data(&data->map_data), 0);
 		}
 	}
 	return (1);

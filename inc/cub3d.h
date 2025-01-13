@@ -187,7 +187,7 @@ void	free_single_texture(t_texture *texture, t_data *data);
 //void	free_single_texture(t_texture *texture);
 void	free_img(t_data *data);
 void	free_color(t_data *data);
-void	free_color_and_data(t_data *data);
+void	free_color_and_data(t_data *data, char *treated_line);
 
 /* minimap/create_mmap.c */
 int		loop_routine(t_data *data);
@@ -219,7 +219,7 @@ int		if_temp_null(t_map_data  *map_data, char **temp);
 char	**manage_temp(t_map_data  *map_data, char *line);
 int		save_line_in_map(t_map_data  *map_data, char *line);
 int		create_map(t_map_data  *map_data, char* map_file);
-void	treat_line(char *treated_line, t_map_data *map_data);
+int		treat_line(char *treated_line, t_map_data *map_data);
 int		create_map_for_game(t_map_data *map_data, char* map_file);
 int		define_player_pos(t_map_data  *map_data);
 int		define_check_pos(t_map_data  *map_data);

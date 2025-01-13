@@ -2,8 +2,22 @@
 
 void	clean_all(t_data *data)
 {
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (&data->texture[i])
+		{
+			if (data->texture[i].path)
+			{
+				free(data->texture[i].path);
+				data->texture[i].path = NULL;
+			}
+		}
+		i++;
+	}
 	free_img(data);
-	free_all_textures(data);
 	free_color(data);
 	free_map_data(&data->map_data);
 	free_wall(data->wall);
@@ -39,9 +53,12 @@ void	free_color(t_data *data)
 	free(data->colors_ceiling);
 }
 
-void	free_color_and_data(t_data *data)
+void	free_color_and_data(t_data *data, char *treated_line)
 {
+	free(treated_line);
+	free_all_textures(data);
 	free_color(data);
+	free_map_data(&data->map_data);
 	free(data);
 }
 
