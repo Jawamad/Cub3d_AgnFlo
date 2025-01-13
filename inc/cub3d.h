@@ -6,7 +6,7 @@
 /*   By: flmuller <flmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:08:13 by flmuller          #+#    #+#             */
-/*   Updated: 2025/01/13 13:24:55 by flmuller         ###   ########.fr       */
+/*   Updated: 2025/01/13 13:30:54 by flmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,10 +277,11 @@ int		retrieve_colors_floor(char *treated_line, t_data *data);
 void	treat_col_val_floor(t_data *data, int *i, char *treated_line, int z);
 int		retrieve_colors_ceiling(char *treated_line, t_data *data);
 void	treat_col_val_ceiling(t_data *data, int *i, char *treated_line, int z);
-void	manage_single_color(char *treated_line, int *i, int *y, char *alpha_num);
-void assign_r_g_b_floor(t_data *data, int z, int color_value);
-void assign_r_g_b_ceiling(t_data *data, int z, int color_value);
-void check_f_c_exist(char *treated_line, t_data *data);
+void	manage_single_color(char *treated_line,
+			int *i, int *y, char *alpha_num);
+void	assign_r_g_b_floor(t_data *data, int z, int color_value);
+void	assign_r_g_b_ceiling(t_data *data, int z, int color_value);
+void	check_f_c_exist(char *treated_line, t_data *data);
 
 /* init texture */
 void	init_images_walls(t_data *data);
@@ -295,9 +296,11 @@ int		retreive_textures(t_data *data, char *treated_line);
 int		check_texture_file_exists(t_data *data);
 
 void	calc_deltadist(t_data *data, t_dpos *deltadist);
-void	calc_sidedist(t_data *data, t_dpos *sidedist, t_coord *map, t_dpos deltadist);
+void	calc_sidedist(t_data *data, t_dpos *sidedist,
+			t_coord *map, t_dpos deltadist);
 void	init_step(t_data *data, t_coord *step);
-void	init_perp_wall_d(int side, double *perp_wall_d, t_dpos sidedist, t_dpos deltadist);
+void	init_perp_wall_d(int side, double *perp_wall_d,
+			t_dpos sidedist, t_dpos deltadist);
 void	calc_dist(t_data *data, t_coord *map, int *side, double *perp_wall_d);
 void	draw_define(double perp_wall_d, t_data *data);
 void	calc_wallx(double *wallx, t_data *data, int side, double perp_wall_d);
