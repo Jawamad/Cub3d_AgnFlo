@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_creation.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agtshiba <agtshiba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/13 13:13:06 by agtshiba          #+#    #+#             */
+/*   Updated: 2025/01/13 13:18:30 by agtshiba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
 int	save_line_in_map(t_map_data *map_data, char *line)
@@ -88,7 +100,7 @@ int	treat_line(char *treated_line, t_map_data *map_data)
 			map_data->width = width;
 		save_line_in_map(map_data, treated_line);
 	}
-	return(1);
+	return (1);
 }
 
 int	create_map_for_game(t_map_data *map_data, char *map_file)

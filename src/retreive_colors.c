@@ -6,7 +6,7 @@
 /*   By: agtshiba <agtshiba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:03:28 by agtshiba          #+#    #+#             */
-/*   Updated: 2025/01/13 12:59:00 by agtshiba         ###   ########.fr       */
+/*   Updated: 2025/01/13 13:08:25 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	retrieve_colors_ceiling(char *treated_line, t_data *data)
 	}
 	return (1);
 }
-
 
 void	treat_col_val_floor(t_data *data, int *i, char *treated_line, int z)
 {
@@ -111,8 +110,6 @@ void	treat_col_val_ceiling(t_data *data, int *i, char *treated_line, int z)
 	}
 }
 
-
-
 void	manage_single_color(char *treated_line, int *i, int *y, char *alpha_num)
 {
 	while (treated_line[*i] != ',' && treated_line[*i] != '\n' && *y < 3)
@@ -121,24 +118,4 @@ void	manage_single_color(char *treated_line, int *i, int *y, char *alpha_num)
 		(*y)++;
 		(*i)++;
 	}
-}
-
-void	assign_r_g_b_floor(t_data *data, int z, int color_value)
-{
-	if (z == 0)
-		data->colors_floor->r = (unsigned char) color_value;
-	if (z == 1)
-		data->colors_floor->g = (unsigned char) color_value;
-	if (z == 2)
-		data->colors_floor->b = (unsigned char) color_value;
-}
-
-void	assign_r_g_b_ceiling(t_data *data, int z, int color_value)
-{
-	if (z == 0)
-		data->colors_ceiling->r = (unsigned char) color_value;
-	if (z == 1)
-		data->colors_ceiling->g = (unsigned char) color_value;
-	if (z == 2)
-		data->colors_ceiling->b = (unsigned char) color_value;
 }

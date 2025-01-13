@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agtshiba <agtshiba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/13 13:13:00 by agtshiba          #+#    #+#             */
+/*   Updated: 2025/01/13 13:15:14 by agtshiba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
 int	main(int ac, char **av)
@@ -9,9 +21,11 @@ int	main(int ac, char **av)
 		return (0);
 	allocate_colors(data);
 	if (!parsing(ac, av, data))
-		return (ft_printf("Exiting program ...\n"), free_color(data), free(data), 1);
+		return (ft_printf("Exiting program ...\n"),
+			free_color(data), free(data), 1);
 	if (!retreive_infos_textures(data, av))
-		return (ft_printf("Exiting program ...\n"), free_color(data), free_all_textures(data), free(data), 1);
+		return (ft_printf("Exiting program ...\n"), free_color(data),
+			free_all_textures(data), free(data), 1);
 	init_var(data);
 	init_win(data);
 	init_map(data);
